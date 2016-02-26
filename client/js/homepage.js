@@ -1,15 +1,15 @@
-angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
+angular.module('nibs.homepage', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
 
     // Routes
     .config(function ($stateProvider) {
 
         $stateProvider
 
-            .state('app.offers', {
-                url: "/offers",
+            .state('app.homepage', {
+                url: "/homepage",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/offer-list.html",
+                        templateUrl: "templates/homepage.html",
                         controller: "OfferListCtrl"
                     }
                 }
