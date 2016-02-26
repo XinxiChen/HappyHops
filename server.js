@@ -46,7 +46,9 @@ app.post('/fblogin', facebook.login);
 app.get('/users/me', auth.validateToken, users.getProfile);
 app.put('/users/me', auth.validateToken, users.updateProfile);
 
-app.get('/offers', auth.validateToken, offers.getAll);
+app.get('/offers', offers.getAll);
+// app.get('/offers', auth.validateToken, offers.getAll);
+
 app.get('/offers/:id', offers.getById);
 app.get('/products', auth.validateToken, products.getAll);
 app.get('/products/:id', auth.validateToken, products.getById);
