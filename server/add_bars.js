@@ -8,6 +8,7 @@ var fs = require('fs'),
 var filePath = path.join(__dirname, '../add_bars2.sql');
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
+    console.log("Running Add_bars");
     if (err) {
         console.log(err);
     } else {
