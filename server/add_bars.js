@@ -17,7 +17,7 @@ fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
                 db.close();
             })
             .catch(function(error) {
-                console.log("Error loading 'salesforce' schema test data");
+                console.log("Error loading BAR data 'salesforce' schema test data");
                 console.log(error)
                 db.close();
             })
