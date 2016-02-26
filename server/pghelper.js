@@ -21,6 +21,7 @@ exports.query = function (sql, values, singleItem, dontLog) {
 
     pg.connect(databaseURL, function (err, conn, done) {
         if (err) return deferred.reject(err);
+        console.log("successful connect DB!");
         try {
             conn.query(sql, values, function (err, result) {
                 done();
@@ -38,7 +39,7 @@ exports.query = function (sql, values, singleItem, dontLog) {
     });
 
     return deferred.promise;
- 
+
 };
 
 exports.close = function() {
