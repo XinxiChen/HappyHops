@@ -79,7 +79,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
                 $rootScope.loading = false;
                 if (response && response.status === 401) {
                     // TODO: broadcast event instead.
-                    $location.path('/app/welcome');
+                    $location.path('/app/homepage');
                 } else if (response && response.status !== 404) {
                     console.log(response);
                     // alert(response.data);
