@@ -1,0 +1,2 @@
+INSERT INTO salesforce.campaign (id, name, description, image__c, type, status) VALUES
+    (8, '10% of Eco Bar', 'Twice as much Eco!', 'http://www.stiridemontreal.com/wp-content/uploads/2016/02/Drink_Bar_Alcool_Pub_Dom.jpg', 'Offer', 'In Progress');
