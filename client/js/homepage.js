@@ -15,26 +15,6 @@ angular.module('nibs.homepage', ['openfb', 'nibs.status', 'nibs.activity', 'nibs
                 }
             })
 
-            .state('app.offer-detail', {
-                url: "/offers/:offerId",
-                views: {
-                    'menuContent' :{
-                        templateUrl: "templates/offer-detail.html",
-                        controller: "OfferDetailCtrl"
-                    }
-                }
-            })
-
-            .state('app.offer-redeem', {
-                url: "/offers/:offerId/redeem",
-                views: {
-                    'menuContent' :{
-                        templateUrl: "templates/redeem.html",
-                        controller: "OfferDetailCtrl"
-                    }
-                }
-            })
-
     })
 
     // Services
