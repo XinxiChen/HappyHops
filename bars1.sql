@@ -1,7 +1,7 @@
-DELETE FROM salesforce.campaign WHERE id=1
+DELETE FROM salesforce.campaign WHERE id=1;
 
 INSERT INTO salesforce.campaign (id, name, description, image__c, type, status) VALUES
-    (1, '10% of EcoTruffles', 'Twice as much Eco!', 'http://www.stiridemontreal.com/wp-content/uploads/2016/02/Drink_Bar_Alcool_Pub_Dom.jpg', 'Offer', 'In Progress'),
+    (1, '10% of EcoTruffles', 'Twice as much Eco!', 'http://www.stiridemontreal.com/wp-content/uploads/2016/02/Drink_Bar_Alcool_Pub_Dom.jpg', 'Offer', 'In Progress');
     -- (2, '10% off EcoChocolate: Fair Trade and Organic Chocolates', '0% off chocolate that makes you feel as good as they tastes! Fair Trade and Organic chocolates assortment...', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/nibs/ritual2.jpg', 'Offer', 'In Progress'),
     -- (3, 'Buy 2 Get 1 Free: Dandelion Chocolate for Connoisseurs', 'Purists, Foodies and Afficionados: Buy 2 Bars Get 1 Free', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/Purists+Campaign+.png', 'Offer', 'In Progress'),
     -- (4, 'Buy 4 Get 6: Best of San Francisco', 'Buy 4, get 6 of of the city''s finest native chocolatiers, old and new: Tcho, Dandelion, Recchiutti, Ghirardelli, Sharffenburger, Guittard.', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/Best+of+San+Francisco+Campaign.png', 'Offer', 'In Progress'),
