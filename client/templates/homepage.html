@@ -27,9 +27,12 @@
  -->            <div ng-repeat="offer in offers" class="list card">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                     <div class="item">
-                        <h2>{{offer.name}}</h2>
-
-                        <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
+                        <h2>{{offer.barName}}</h2>
+                        <div class="item item-avatar">
+                            <img ng-if="offer.bartenderPic" ng-src="{{offer.bartenderPic}}">
+                            <h3>{{offer.bartenderName}}</h3>
+                        </div>
+                        <p>Posted on {{offer.createdTime | date:'EEEE, MMMM d y'}}</p>
                     </div>
                     <div class="item item-body">
                         <img ng-if="offer.image" ng-src="{{offer.image}}">

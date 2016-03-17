@@ -115,7 +115,13 @@ CREATE TABLE IF NOT EXISTS salesforce.campaign (
     /* customized items*/
     deal__valid__duration TEXT,
     createdTime     timestamp,
-    bartender__id   BIGSERIAL REFERENCES salesforce.bartender(id)
+    bartender__id   BIGSERIAL REFERENCES salesforce.bartender(id),
+    barName         TEXT,
+    bartenderName   TEXT,
+    location        TEXT,
+    location__latitude__s  TEXT,
+    location__longitude__s TEXT,
+    bartenderPic    TEXT
    
   );
 /*
@@ -157,9 +163,9 @@ INSERT INTO salesforce.bartender (id, email, password__c, bar_id, nickName, pict
        (3, 'xc336@cornell.edu', 'test123', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try');
        
 /* Insert data for feeds.*/
-INSERT INTO salesforce.campaign (id, bartender__id, name, description, image__c, type, status) VALUES
-       (1, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress'),
-       (2, 2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress'),
-       (3, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress');
+INSERT INTO salesforce.campaign (id, bartender__id, name, description, image__c, type, status, createdTime, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic) VALUES
+       (1, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress', '2016-03-17 12:00 EDT', 'Cooper''s Craft & Kitchen', 'Emil', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg'),
+       (2, 2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress', '2016-03-17 11:00 EDT', 'Flight 151', 'Niklas', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg'),
+       (3, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress', '2016-03-17 10:00 EDT', 'Wood and Ale''s', 'Xinxi', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg');
 
 
