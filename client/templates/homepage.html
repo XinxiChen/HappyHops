@@ -35,7 +35,7 @@
                         <p>Posted on {{offer.createdTime | date:'EEEE, MMMM d y'}}</p>
                     </div>
                     <div class="item item-body">
-                        <img ng-if="offer.image" ng-src="{{offer.image}}">
+                        <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
                         <p>{{offer.description}}</p>
                     </div>
                 </a>
