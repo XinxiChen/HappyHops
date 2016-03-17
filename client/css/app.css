@@ -71,8 +71,9 @@ a {
 }
 
 .welcome {
-    background: url('img/background2.jpg') no-repeat center center fixed;
-/*    background: url('img/welcom-page-bar.jpg') no-repeat center center fixed;*/    
+/*    background: url('img/background2.jpg') no-repeat center center fixed;
+*//*    background: url('img/welcom-page-bar.jpg') no-repeat center center fixed;*/ 
+    background: black;   
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
