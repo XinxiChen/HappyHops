@@ -1,4 +1,16 @@
+﻿DROP TABLE IF EXISTS salesforce.contact;
+DROP TABLE IF EXISTS salesforce.interaction__c;
+DROP TABLE IF EXISTS salesforce.campaign;
+DROP TABLE IF EXISTS salesforce.bartender;
+DROP TABLE IF EXISTS salesforce.product2;
+DROP TABLE IF EXISTS salesforce.contact;
+DROP TABLE IF EXISTS salesforce.store__c;
+
+DROP SCHEMA IF EXISTS salesforce;
+
 CREATE SCHEMA IF NOT EXISTS salesforce;
+
+
 
 CREATE TABLE IF NOT EXISTS salesforce.contact (
     id              BIGSERIAL,
@@ -30,7 +42,63 @@ CREATE TABLE IF NOT EXISTS salesforce.interaction__c (
     createddate             timestamp
   );
 
-DROP TABLE IF EXISTS salesforce.campaign;
+
+  
+/* For bars*/
+/*DROP TABLE IF EXISTS salesforce.product2;*/
+CREATE TABLE IF NOT EXISTS salesforce.product2 (
+    id              BIGSERIAL PRIMARY KEY,
+    name            TEXT,
+    description     TEXT,
+    image__c        TEXT,
+    productpage__c  TEXT,
+    publishdate__c  DATE,
+    family          TEXT,
+    /* customized items*/
+    bar__id         BIGSERIAL,
+    location        TEXT,
+    location__latitude__s   TEXT,
+    location__longitude__s  TEXT,
+    open__hours     TEXT,
+    amentities      integer[6],
+    bartender__ids  integer[],
+    flag            integer[6]
+  );
+
+/*DROP TABLE IF EXISTS salesforce.store__c;*/
+CREATE TABLE IF NOT EXISTS salesforce.store__c (
+    id                      BIGSERIAL PRIMARY KEY,
+    name                    TEXT,
+    location__latitude__s   TEXT,
+    location__longitude__s  TEXT
+  );
+
+ /* For bartenders*/
+/*DROP TABLE IF EXISTS salesforce.bartender;*/
+CREATE TABLE IF NOT EXISTS salesforce.bartender (
+    id              BIGSERIAL PRIMARY KEY,
+    firstName       TEXT,
+    lastName        TEXT,
+    email           TEXT,
+    mobilePhone     TEXT,
+    leadsource      TEXT,
+    accountid       TEXT,
+    pictureURL__c   TEXT,
+    preference__c   TEXT,
+    size__c         TEXT,
+    loyaltyid__c    TEXT,
+    password__c     TEXT,
+    fbuserid__c     TEXT,
+    gender__c       TEXT,
+    createddate     timestamp,
+
+    /* customized items*/
+    bar_id          BIGSERIAL REFERENCES salesforce.product2 (id),
+    nickName        TEXT,
+    description     TEXT
+  ); 
+/* For feeds*/
+/*DROP TABLE IF EXISTS salesforce.campaign;*/
 CREATE TABLE IF NOT EXISTS salesforce.campaign (
     id              BIGSERIAL PRIMARY KEY,
     sfId            TEXT,
@@ -42,28 +110,15 @@ CREATE TABLE IF NOT EXISTS salesforce.campaign (
     campaignpage__c TEXT,
     publishdate__c  DATE,
     type            TEXT,
-    status          TEXT
-  );
+    status          TEXT,
 
-DROP TABLE IF EXISTS salesforce.product2;
-CREATE TABLE IF NOT EXISTS salesforce.product2 (
-    id              BIGSERIAL PRIMARY KEY,
-    name            TEXT,
-    description     TEXT,
-    image__c        TEXT,
-    productpage__c  TEXT,
-    publishdate__c  DATE,
-    family          TEXT
+    /* customized items*/
+    deal__valid__duration TEXT,
+    createdTime     timestamp,
+    bartender__id   BIGSERIAL REFERENCES salesforce.bartender(id)
+   
   );
-
-DROP TABLE IF EXISTS salesforce.store__c;
-CREATE TABLE IF NOT EXISTS salesforce.store__c (
-    id                      BIGSERIAL PRIMARY KEY,
-    name                    TEXT,
-    location__latitude__s   TEXT,
-    location__longitude__s  TEXT
-  );
-
+/*
 INSERT INTO salesforce.campaign (id, name, description, image__c, type, status) VALUES
     (1, '10% of Eco Bar Happy Hour', 'Twice as much Eco!', 'http://www.stiridemontreal.com/wp-content/uploads/2016/02/Drink_Bar_Alcool_Pub_Dom.jpg', 'Offer', 'In Progress'),
     (2, '10% off EcoChocolate: Fair Trade and Organic Chocolates', '0% off chocolate that makes you feel as good as they tastes! Fair Trade and Organic chocolates assortment...', 'https://s3-us-west-1.amazonaws.com/sfdc-demo/nibs/ritual2.jpg', 'Offer', 'In Progress'),
@@ -87,3 +142,24 @@ INSERT INTO salesforce.store__c (id, name, location__latitude__s, location__long
     (1, 'Marquis', 37.785143, -122.403405),
     (2, 'Hilton', 37.786164, -122.410137),
     (3, 'Hyatt', 37.794157, -122.396311)
+*/
+
+/* Insert data for bars.*/
+INSERT INTO salesforce.product2 (id, name, bartender__ids, image__c, location, location__latitude__s, location__longitude__s, open__hours, description)  VALUES
+	(1, 'Cooper''s Craft & Kitchen', '{1}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', '11AM-2AM', 'Hip, airy hangout with exposed-brick walls pairing craft beer with innovative bar fare.'),
+	(2, 'Flight 151', '{2}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', '11AM-4AM', 'Neighborhood watering hole with aviation theme, drink specials, happy hour & pub food.'),
+	(3, 'Wood and Ale''s', '{3}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', '11AM-4AM', 'Low-key site for pints & pitchers with burgers, wings & nachos amid dark digs with sports on TVs.');		
+
+/* Insert data for bartenders.*/
+INSERT INTO salesforce.bartender (id, email, password__c, bar_id, nickName, pictureURL__c, description) VALUES
+       (1, 'js3259@cornell.edu', 'test123', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!'),
+       (2, 'kb623@cornell.edu', 'test321', 2, 'Niklas', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg', 'Swede who knows his Manhattan(s)'),
+       (3, 'xc336@cornell.edu', 'test123', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try');
+       
+/* Insert data for feeds.*/
+INSERT INTO salesforce.campaign (id, bartender__id, name, description, image__c, type, status) VALUES
+       (1, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress'),
+       (2, 2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress'),
+       (3, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress');
+
+
