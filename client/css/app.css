@@ -92,6 +92,28 @@ a {
     margin-top: 84px;
 }
 
+.homepage {
+/*    background: url('img/background2.jpg') no-repeat center center fixed;
+*//*    background: url('img/welcom-page-bar.jpg') no-repeat center center fixed;*/ 
+    background: black;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+}
+
+.homepage h2 {
+    font-family: "Source Sans Light";
+    font-size: 2.4rem;
+    color: #ffffff;
+    line-height: 1.8rem;
+}
+
+.homepage .bottom {
+    margin-top: 84px;
+}
+
 .icon-arrow-right {
     font-weight: 200;
     background: url('img/icon-arrow-right.png');
@@ -459,20 +481,20 @@ a {
     flex: 1;
 }
 
-.card .item {
-    padding: 12px;
+/*.card .item {
+    padding: 4px;
 }
 
 .card .item-body p,
 .card .item-body a
 {
-    margin: 8px;
+    margin: 0px;
 }
 
 .card .item-body a
 {
-    margin: 4px 0px !important;
-}
+    margin: 0px 0px !important;
+}*/
 
 .popup h3,
 .popup h4
