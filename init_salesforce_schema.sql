@@ -151,21 +151,35 @@ INSERT INTO salesforce.store__c (id, name, location__latitude__s, location__long
 */
 
 /* Insert data for bars.*/
-INSERT INTO salesforce.product2 (id, name, bartender__ids, image__c, location, location__latitude__s, location__longitude__s, open__hours, description)  VALUES
-	(1, 'Cooper''s Craft & Kitchen', '{1}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', '11AM-2AM', 'Hip, airy hangout with exposed-brick walls pairing craft beer with innovative bar fare.'),
-	(2, 'Flight 151', '{2}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', '11AM-4AM', 'Neighborhood watering hole with aviation theme, drink specials, happy hour & pub food.'),
-	(3, 'Wood and Ale''s', '{3}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', '11AM-4AM', 'Low-key site for pints & pitchers with burgers, wings & nachos amid dark digs with sports on TVs.');		
+INSERT INTO salesforce.product2 (name, bartender__ids, image__c, location, location__latitude__s, location__longitude__s, open__hours, description)  VALUES
+	('Cooper''s Craft & Kitchen', '{1}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', '11AM-2AM', 'Hip, airy hangout with exposed-brick walls pairing craft beer with innovative bar fare.'),
+	('Flight 151', '{2}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', '11AM-4AM', 'Neighborhood watering hole with aviation theme, drink specials, happy hour & pub food.'),
+	('Wood and Ale''s', '{3}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', '11AM-4AM', 'Low-key site for pints & pitchers with burgers, wings & nachos amid dark digs with sports on TVs.');		
+-- INSERT INTO salesforce.product2 (id, name, bartender__ids, image__c, location, location__latitude__s, location__longitude__s, open__hours, description)  VALUES
+--     (1, 'Cooper''s Craft & Kitchen', '{1}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', '11AM-2AM', 'Hip, airy hangout with exposed-brick walls pairing craft beer with innovative bar fare.'),
+--     (2, 'Flight 151', '{2}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', '11AM-4AM', 'Neighborhood watering hole with aviation theme, drink specials, happy hour & pub food.'),
+--     (3, 'Wood and Ale''s', '{3}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', '11AM-4AM', 'Low-key site for pints & pitchers with burgers, wings & nachos amid dark digs with sports on TVs.');     
+
 
 /* Insert data for bartenders.*/
-INSERT INTO salesforce.bartender (id, email, password__c, bar_id, nickName, pictureURL__c, description) VALUES
-       (1, 'js3259@cornell.edu', 'test123', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!'),
-       (2, 'kb623@cornell.edu', 'test321', 2, 'Niklas', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg', 'Swede who knows his Manhattan(s)'),
-       (3, 'xc336@cornell.edu', 'test123', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try');
-       
+INSERT INTO salesforce.bartender (email, password__c, bar_id, nickName, pictureURL__c, description) VALUES
+       ('js3259@cornell.edu', 'test123', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!'),
+       ('kb623@cornell.edu', 'test321', 2, 'Niklas', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg', 'Swede who knows his Manhattan(s)'),
+       ('xc336@cornell.edu', 'test123', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try');
+
+-- INSERT INTO salesforce.bartender (id, email, password__c, bar_id, nickName, pictureURL__c, description) VALUES
+--        (1, 'js3259@cornell.edu', 'test123', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!'),
+--        (2, 'kb623@cornell.edu', 'test321', 2, 'Niklas', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg', 'Swede who knows his Manhattan(s)'),
+--        (3, 'xc336@cornell.edu', 'test123', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try');
+             
 /* Insert data for feeds.*/
-INSERT INTO salesforce.campaign (id, bartender__id, name, description, image__c, type, status, createdTime, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic) VALUES
-       (1, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress', '2016-03-17 12:00 EDT', 'Cooper''s Craft & Kitchen', 'Emil', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg'),
-       (2, 2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress', '2016-03-17 11:00 EDT', 'Flight 151', 'Niklas', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg'),
-       (3, 3, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress', '2016-03-17 10:00 EDT', 'Wood and Ale''s', 'Xinxi', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg');
+-- INSERT INTO salesforce.campaign (id, bartender__id, name, description, image__c, type, status, createdTime, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic) VALUES
+--        (1, 1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress', '2016-03-17 12:00 EDT', 'Cooper''s Craft & Kitchen', 'Emil', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg'),
+--        (2, 2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress', '2016-03-17 11:00 EDT', 'Flight 151', 'Niklas', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg'),
+--        (3, 3, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress', '2016-03-17 10:00 EDT', 'Wood and Ale''s', 'Xinxi', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg');
+INSERT INTO salesforce.campaign (bartender__id, name, description, image__c, type, status, createdTime, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic) VALUES
+       (1, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar1.jpg', 'Offer', 'In Progress', '2016-03-17 12:00 EDT', 'Cooper''s Craft & Kitchen', 'Emil', '169 8th Ave, New York, NY 10011', '40.7426947', '-74.0029736', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg'),
+       (2, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar2.jpg', 'Offer', 'In Progress', '2016-03-17 11:00 EDT', 'Flight 151', 'Niklas', '151 8th Ave #1, New York, NY 10011', '40.742112', '-74.0034047', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg'),
+       (3, 'Free Text 1', 'Free Text 2', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', 'Offer', 'In Progress', '2016-03-17 10:00 EDT', 'Wood and Ale''s', 'Xinxi', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg');
 
 

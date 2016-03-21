@@ -1,4 +1,4 @@
-<ion-view title="Special Offers" hide-back-button="true" class="card-bg">
+<ion-view title="Happy Hops" hide-back-button="true" class="card-bg">
 
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -23,19 +23,32 @@
         </div> 
         -->
 
-        <div ng-repeat="offer in offers" class="list card">
-            <a ui-sref="app.offer-detail({offerId: offer.id})">
-                <div class="item">
-                    <h2>{{offer.name}}</h2>
+             <div ng-repeat="offer in offers" class="list card">
+                <a ui-sref="app.offer-detail({offerId: offer.id})">
+                    <div class="item item-avatar">
+                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}"> 
+                        <p><b>{{offer.bartendername}}</b></p>
+                        <p>{{offer.barname}}</p>
+                    </div>
+                    <div class="item item-text-wrap">
 
-                    <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
-                </div>
-                <div class="item item-body">
-                    <img ng-if="offer.image" ng-src="{{offer.image}}">
-                    <p>{{offer.description}}</p>
-                </div>
-            </a>
-        </div>
+                       <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
+                        <p>Posted on {{offer.createdtime | date:'MMMM d'}}</p>
+                    </div>
+                    <div class="item item-image">
+                        <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+                    </div>
+                    <div class="item item-body">
+<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+ -->                        <p>{{offer.description}}</p>
+<!--                         <p>
+                            <a href="#" class="subdued">1 Like</a>
+                            <a href="#" class="subdued">5 Comments</a>
+                        </p> -->
+                    </div>
+
+                </a>
+            </div>
 
 
     </ion-content>

@@ -130,6 +130,7 @@ function logout(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function signup(req, res, next) {
+    console.log("Enter Server signup");
 
     winston.info('signup');
 
@@ -163,6 +164,136 @@ function signup(req, res, next) {
             });
         })
         .catch(next);
+};
+
+/* Bartender */
+/**
+ * Regular login with application credentials
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*|ServerResponse}
+ */
+function bartenderlogin(req, res, next) {
+    winston.info('bartenderlogin');
+
+    var creds = req.body;
+    console.log(creds);
+
+    // Don't allow empty passwords which may allow people to login using the email address of a Facebook user since
+    // these users don't have passwords
+    if (!creds.password || !validator.isLength(creds.password, 1)) {
+        return res.send(401, invalidCredentials);
+    }
+
+    db.query('SELECT id, firstName, lastName, email, loyaltyid__c as externalUserId, password__c AS password FROM salesforce.bartender WHERE email=$1', [creds.email], true)
+        .then(function (user) {
+            if (!user) {
+                return res.send(401, invalidCredentials);
+            }
+            comparePassword(creds.password, user.password, function (err, match) {
+                if (err) return next(err);
+                if (match) {
+                    createAccessToken(user)
+                        .then(function(token) {
+                            return res.send({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname}, 'token': token});
+                        })
+                        .catch(function(err) {
+                            return next(err);    
+                        });
+                } else {
+                    // Passwords don't match
+                    return res.send(401, invalidCredentials);
+                }
+            });
+        })
+        .catch(next);
+};
+
+/**
+ * Logout user
+ * @param req
+ * @param res
+ * @param next
+ */
+function bartenderlogout(req, res, next) {
+    winston.info('bartenderlogout');
+    var token = req.headers['authorization'];
+    winston.info('Logout token:' + token);
+    db.query('DELETE FROM tokens WHERE token = $1', [token])
+        .then(function () {
+            winston.info('Logout successful');
+            res.send('OK');
+        })
+        .catch(next);
+};
+
+/**
+ * Signup
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*|ServerResponse}
+ */
+function bartendersignup(req, res, next) {
+
+    winston.info('bartendersignup');
+
+    var user = req.body;
+
+    if (!validator.isEmail(user.email)) {
+        return res.send(400, "Invalid email address");
+    }
+    if (!validator.isLength(user.firstName, 1) || !validator.isAlphanumeric(user.firstName)) {
+        return res.send(400, "First name must be at least one character");
+    }
+    if (!validator.isLength(user.lastName, 1) || !validator.isAlphanumeric(user.lastName)) {
+        return res.send(400, "Last name must be at least one character");
+    }
+    if (!validator.isLength(user.password, 4)) {
+        return res.send(400, "Password must be at least 4 characters");
+    }
+
+    db.query('SELECT id FROM salesforce.bartender WHERE email=$1', [user.email], true)
+        .then(function (u) {
+            if(u) {
+                return next(new Error('Email address already registered'));
+            }
+            encryptPassword(user.password, function (err, hash) {
+                if (err) return next(err);
+                createBartender(user, hash)
+                    .then(function () {
+                        return res.send('OK');
+                    })
+                    .catch(next);
+            });
+        })
+        .catch(next);
+}; 
+
+/**
+ * Create a bartender
+ * @param user
+ * @param password
+ * @returns {promise|*|Q.promise}
+ */
+function createBartender(user, password) {
+
+    var deferred = Q.defer(),
+        externalUserId = (+new Date()).toString(36); // TODO: more robust UID logic
+
+    // Set the primary key to correct incremental value
+    // db.query('SELECT setval(''the_primary_key_sequence'', (SELECT MAX(the_primary_key) FROM salesforce.bartender)+1);');
+
+    db.query('INSERT INTO salesforce.bartender (email, password__c, firstname, lastname, leadsource, loyaltyid__c, accountid) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, firstName, lastName, email, loyaltyid__c as externalUserId',
+        [user.email, password, user.firstName, user.lastName, 'Loyalty App', externalUserId, config.contactsAccountId], true)
+        .then(function (insertedUser) {
+            deferred.resolve(insertedUser);
+        })
+        .catch(function(err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
 };
 
 /**
@@ -219,6 +350,10 @@ function validateToken (req, res, next) {
 exports.login = login;
 exports.logout = logout;
 exports.signup = signup;
+exports.bartenderlogin = bartenderlogin;
+exports.bartenderlogout = bartenderlogout;
+exports.bartendersignup = bartendersignup;
 exports.createUser = createUser;
+exports.createBartender = createBartender;
 exports.createAccessToken = createAccessToken;
 exports.validateToken = validateToken;

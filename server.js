@@ -39,6 +39,11 @@ app.use(function(err, req, res, next) {
 });
 
 app.post('/login', auth.login);
+app.post('/bartenderlogin', auth.bartenderlogin);
+app.post('/bartendersignup', auth.bartendersignup);
+app.post('/bartenderlogout', auth.validateToken, auth.logout);
+
+
 app.post('/logout', auth.validateToken, auth.logout);
 app.post('/signup', auth.signup);
 app.post('/fblogin', facebook.login);
