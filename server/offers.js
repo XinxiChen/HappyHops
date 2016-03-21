@@ -29,6 +29,13 @@ function getById(req, res, next) {
         .catch(next);
 };
 
+/* Feed Function 
+
+function addFeed(id, text) {
+    db.query("INSERT")
+}
+*/
+
 exports.findAll = findAll;
 exports.findById = findById;
 exports.getAll = getAll;
