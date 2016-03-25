@@ -63,10 +63,12 @@ function post(req, res, next) {
         var bartext = JSON.parse(barinfo);
 
            console.log('Bar info: ' + barinfo);
+           // if (!Date.now) {
+           //      Date.now = function() { return new Date().getTime(); }
+           //  }
 
-
-            db.query('INSERT INTO salesforce.campaign (description, bartenderName, barName, bartenderPic, bartender__id, image__c, location, location__latitude__s, location__longitude__s) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-                    [user.text, user.nickname, user.barname, user.pictureurl, user.id, bartext.image__c, bartext.location, bartext.location__latitude__s, bartext.location__longitude__s], true)
+            db.query('INSERT INTO salesforce.campaign (description, bartenderName, barName, bartenderPic, bartender__id, image__c, location, location__latitude__s, location__longitude__s, createdTime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+                    [user.text, user.nickname, user.barname, user.pictureurl, user.id, bartext.image__c, bartext.location, bartext.location__latitude__s, bartext.location__longitude__s, new Date()], true)
                 .then(function () {
                     res.send(barinfo);
                 })
