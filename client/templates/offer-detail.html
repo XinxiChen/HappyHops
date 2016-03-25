@@ -5,7 +5,12 @@
       <div class="list card">
           <div class="item">
               <h2>{{offer.name}}</h2>
-              <p>Posted    ago</p>
+              <p>Posted
+                    <script>
+                    var time = new Date();
+                    document.getElementById("demo").innerHTML = d.getMinutes();
+                    </script>
+                ago</p>
               <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
           </div>
           <div class="item item-body">
