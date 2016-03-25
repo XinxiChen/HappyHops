@@ -315,7 +315,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
             Auth.bartenderlogin($scope.user)
                 .success(function (data) {
-                    $state.go("app.profile");
+                    $state.go("app.post");
                 })
                 .error(function (err) {
                     $ionicPopup.alert({title: 'Oops', content: err});

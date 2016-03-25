@@ -11,6 +11,8 @@ var express = require('express'),
     offers = require('./server/offers'),
     products = require('./server/products'),
     users = require('./server/users'),
+    bartenderusers = require('./server/bartenderusers'),
+
 //    cases = require('./server/cases'),
     wallet = require('./server/wallet'),
     wishlist = require('./server/wishlist'),
@@ -48,15 +50,18 @@ app.post('/logout', auth.validateToken, auth.logout);
 app.post('/signup', auth.signup);
 app.post('/fblogin', facebook.login);
 
-app.get('/users/me', auth.validateToken, users.getProfile);
-app.put('/users/me', auth.validateToken, users.updateProfile);
+app.get('/users/me', users.getProfile);
+app.put('/users/me', users.updateProfile);
+app.get('/bartenderusers/bartender', auth.validateToken, bartenderusers.getBartenderProfile);
+app.put('/bartenderusers/bartender', auth.validateToken, bartenderusers.updateBartenderProfile);
+app.post('/bartenderusers/post', auth.validateToken, bartenderusers.post);
 
 app.get('/offers', offers.getAll);
 // app.get('/offers', auth.validateToken, offers.getAll);
 
 app.get('/offers/:id', offers.getById);
-app.get('/products', auth.validateToken, products.getAll);
-app.get('/products/:id', auth.validateToken, products.getById);
+app.get('/products', products.getAll);
+app.get('/products/:id', products.getById);
 app.get('/stores', stores.findAll);
 
 app.get('/wallet', auth.validateToken, wallet.getItems);

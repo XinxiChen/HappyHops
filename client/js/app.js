@@ -1,4 +1,4 @@
-var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.offer', 'nibs.homepage', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case'])
+var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.offer', 'nibs.homepage', 'nibs.post', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case'])
 
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 
@@ -27,7 +27,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
             }
         });
 
-        $state.go('app.profile');
+        $state.go('app.offers');
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {

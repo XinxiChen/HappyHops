@@ -48,5 +48,7 @@ function updateProfile(req, res, next) {
         .catch(next);
 };
 
+
 exports.getProfile = getProfile;
 exports.updateProfile = updateProfile;
+
