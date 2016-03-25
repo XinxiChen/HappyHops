@@ -14,17 +14,17 @@
             <h2>next?</h2>
 
             <div class="bottom">
-                <a class="button button-stable" ui-sref="app.signup" style="max-width:84%;color:#73404C;padding-left:28px;padding-right:28px;">
+                <!-- <a class="button button-stable" ui-sref="app.signup" style="max-width:84%;color:#73404C;padding-left:28px;padding-right:28px;">
                     Sign Up to happy some hops
                 </a>
                 <a class="button button-block button-clear" ui-sref="app.login">
                     Already a Hopper?&nbsp;&nbsp;Log In&nbsp;<i class="icon-arrow-right"></i>
-                </a>
+                </a> -->
 
-                <a class="button button-block button-clear" ui-sref="app.bartenderlogin">
+                <a class="button button－stable" ui-sref="app.bartenderlogin">
                     You are a bartender?&nbsp;<i class="icon-arrow-right"></i>
                 </a>
-                
+
             </div>
         </div>
 
@@ -32,7 +32,7 @@
  -->            <div ng-repeat="offer in offers" class="list card">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                     <div class="item item-avatar">
-                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}"> 
+                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
                         <p><b>{{offer.bartendername}}</b></p>
                         <p>{{offer.barname}}</p>
                     </div>
