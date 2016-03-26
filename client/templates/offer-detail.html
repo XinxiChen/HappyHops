@@ -9,15 +9,8 @@
               <!-- <p>Posted 50 mins ago</p> -->
 
               <!-- <p id = "demo"> </p> -->
-              <p id = "demo" onclick="myFunction()"> Posted 50 minnutes ago</p>
-              <script>
-              function myFunction() {
-                var d = new Date();
-                var x = document.getElementById("demo");
-                var m = d.getMinutes();
-                x.innerHTML =  ":123123123" + m + ":" ;
-                }
-             </script>
+              <p id = "demo"> Posted 50 minnutes  {{offers.getTime | date:""}} ago</p>
+
 
               <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
           </div>

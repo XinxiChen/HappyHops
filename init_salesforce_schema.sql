@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS salesforce.bartender (
     password__c     TEXT,
     fbuserid__c     TEXT,
     gender__c       TEXT,
-    barname         TEXT,
     createddate     timestamp,
 
     /* customized items*/
     bar_id          BIGSERIAL REFERENCES salesforce.product2 (id),
     nickName        TEXT,
     barName         TEXT,
+
     description     TEXT
   );
 /* For feeds*/

@@ -1,12 +1,19 @@
 var db = require('./pghelper'),
     winston = require('winston');
-function getTime() {
-      var d = new Date();
-      var x = offer-detail.getElementById("demo");
-      var m = d.getMinutes();
-      x.innerHTML =  ":123123123" + m + ":" ;
-      }
-  
+
+// function getBarName(){
+//     document.write("get name is running!!")
+//     return db.query('SELECT name FROM salesforce.product2');
+//
+// };
+//
+// function getTime() {
+//       var d = new Date();
+//       var x = offer-detail.getElementById("demo");
+//       var m = d.getMinutes();
+//       x.innerHTML =  ":123123123" + m + ":" ;
+//     };
+
 function findAll(limit) {
     //return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
     return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign ORDER BY id DESC LIMIT $1', [limit]);
@@ -48,3 +55,5 @@ exports.findAll = findAll;
 exports.findById = findById;
 exports.getAll = getAll;
 exports.getById = getById;
+// exports.getBarName = getBarName
+// exports.getTime = getTime
