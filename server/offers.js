@@ -1,9 +1,15 @@
 var db = require('./pghelper'),
     winston = require('winston');
-
+function getTime() {
+      var d = new Date();
+      var x = offer-detail.getElementById("demo");
+      var m = d.getMinutes();
+      x.innerHTML =  ":123123123" + m + ":" ;
+      }
+    </script>
 function findAll(limit) {
     //return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
-    return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign ORDER BY id DESC LIMIT $1", [limit]);
+    return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign ORDER BY id DESC LIMIT $1', [limit]);
 
 };
 
@@ -31,7 +37,7 @@ function getById(req, res, next) {
         .catch(next);
 };
 
-/* Feed Function 
+/* Feed Function
 
 function addFeed(id, text) {
     db.query("INSERT")
