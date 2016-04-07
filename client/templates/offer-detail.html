@@ -9,26 +9,25 @@
               <!-- <p>Posted 50 mins ago</p> -->
 
               <!-- <p id = "demo"> </p> -->
-              <p id = "demo"> Posted 50 minnutes  {{offers.getTime | date:""}} ago</p>
-
+              <p id = "demo"> Posted {{offer.getTime}} ago</p>
 
               <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
           </div>
           <div class="item item-body">
-              <img class="full-image" ng-if="offer.image"  ng-src="{{offer.image}}">
+              <img  class="full-image" ng-if="offer.image"  ng-src="{{offer.image}}" style="width:1200px;height:500px;" >
               <p>{{offer.description}}</p>
 
-              <div class="button-bar">
+              <!-- <div class="button-bar">
                   <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()">
                       Redeem
                   </a>
                   <a class="button button-block button-light"  style="font-size: .9rem;" ng-click="saveToWallet()">
                       Save to Wallet
                   </a>
-              </div>
+              </div> -->
           </div>
 
-          <div class="item tabs tabs-secondary">
+          <!-- <div class="item tabs tabs-secondary">
               <a class="tab-item" ng-click="shareOnFacebook()">
                   <i class="icon icon-facebook"></i>
               </a>
@@ -38,7 +37,7 @@
               <a class="tab-item" ng-click="shareOnTwitter()">
                   <i class="icon icon-twitter"></i>
               </a>
-          </div>
+          </div> -->
       </div>
 
   </ion-content>
