@@ -9,9 +9,9 @@
               <!-- <p>Posted 50 mins ago</p> -->
 
               <!-- <p id = "demo"> </p> -->
-              <p id = "demo"> Posted {{offer.getTime}} ago</p>
+              <p id = "demo"> Posted 1 minute ago {{offer.getTime}} </p>
 
-              <p>Expires on {{offer.enddate | date:'EEEE, MMMM d y'}}</p>
+              <p>Expires on April 10th{{offer.enddate | date:'EEEE, MMMM d y'}}</p>
           </div>
           <div class="item item-body">
               <img  class="full-image" ng-if="offer.image"  ng-src="{{offer.image}}" style="width:1200px;height:500px;" >
