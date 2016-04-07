@@ -20,28 +20,27 @@
                 </button>
 
             </div>
-        </div> 
+        </div>
         -->
-
              <div ng-repeat="offer in offers" class="list card">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                     <div class="item item-avatar">
-                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}"> 
+                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
                         <p><b>{{offer.bartendername}}</b></p>
                         <p>{{offer.barname}}</p>
                     </div>
                     <div class="item item-text-wrap">
-
-                       <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                        <p>Posted on {{offer.createdtime | date:'MMMM d'}}</p>
+                       <!-- <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
+                       <p>Posted on {{offer.createdtime | date:'MMMM d'}}</p>
                     </div>
                     <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+                          <p>fuck  </p>
                     </div>
                     <div class="item item-body">
 <!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
  -->                        <p>{{offer.description}}</p>
-<!--                         <p>
+              
                             <a href="#" class="subdued">1 Like</a>
                             <a href="#" class="subdued">5 Comments</a>
                         </p> -->

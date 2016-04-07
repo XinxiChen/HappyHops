@@ -32,6 +32,7 @@
                         <button class="button button-block button-stable" ng-click="bartenderpost()" ui-sref="app.postcomplete">
                             Submit
                         </button>
+
                 </div>
 
         </div>
@@ -40,7 +41,7 @@
  -->            <div ng-repeat="offer in offers" class="list card">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                     <div class="item item-avatar">
-                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}"> 
+                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
                         <p><b>{{offer.bartendername}}</b></p>
                         <p>{{offer.barname}}</p>
                     </div>
