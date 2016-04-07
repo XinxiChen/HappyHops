@@ -119,9 +119,9 @@ a {
     background: url('img/icon-arrow-right.png');
     background-size: 100% auto;;
     width: 20px;
-    height: 15px;
+    height: 4px;
     display: inline-block;
-    margin-bottom: -4px;
+    margin-bottom: -2px;
 }
 
 .icon-chocolate-square {
