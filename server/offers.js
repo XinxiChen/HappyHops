@@ -9,6 +9,10 @@ var db = require('./pghelper'),
 //
 
 function timeSince(date) {
+    if(!date) {
+        return "";
+    }
+
     var seconds = Math.floor((new Date() - date) / 1000);
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     if (seconds < 5){
@@ -74,6 +78,16 @@ function getAll(req, res, next) {
     findAll(20)
         .then(function (offers) {
             console.log(JSON.stringify(offers));
+            // update timeago
+            console.log("length:" + offers.length);
+            for(i = 0; i < offers.length; ++i)  {
+                console.log("i:" +i+"," + JSON.stringify(offers[i].createdtime));
+
+                offers[i].timeago = timeSince(offers[i].createdtime);
+            }
+
+            console.log("i:" +i+"," + JSON.stringify(offers));
+
             return res.send(JSON.stringify(offers));
         })
         .catch(next);
