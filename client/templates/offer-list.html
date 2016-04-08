@@ -32,7 +32,7 @@
                     </div>
                     <div class="item item-text-wrap">
                        <!-- <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                       <p>Posted on{{offer.createdtime | date:'MMMM d'}}</p>
+                       <p>{{offer.timeago}}</p>
                     </div>
                     <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
@@ -40,9 +40,9 @@
                     </div>
                     <div class="item item-body">
 <!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
--->                        <p>{{offer.description}}</p>
+-->                        <p>{{offer.description}}</p><!-- 
                             <a href="#" class="subdued">1 Like</a>
-                            <a href="#" class="subdued">5 Comments</a>
+                            <a href="#" class="subdued">5 Comments</a> -->
                     </div>
                 </a>
 

@@ -28,7 +28,9 @@
                   </a>
               </div> -->
           </div>
-          <p style="padding-right:500px">ADDRESS</p>
+          <div class="item item-text-wrap">
+            <p>{{offer.location}}</p>
+          </div>
           <div align="center" class="item current_detail">
             <!-- <img>  -->
 
@@ -37,10 +39,12 @@
             <p>$7.00 WELLS </p>
           </div>
 
-          <p>Current Bartender</p>
-          <div>
-            <h2>{{offer.name}}</h2>
+          <div class="item item-avatar">
+                <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
+                <p><b>{{offer.bartendername}}</b></p>
 
+                <p>{{offer.barname}}</p>
+          </div>
 
 
           </div>
