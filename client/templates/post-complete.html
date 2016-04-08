@@ -54,16 +54,11 @@
                         <p><b>{{offer.bartendername}}</b></p>
                         <p>{{offer.barname}}</p>
                     </div>
-                    <div class="item item-text-wrap">
-
-                       <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                        <!-- <img align = "right" ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}" > -->
-                        <!-- <img align="right" src="/Users/jingjingzhang/GitHub/HappyHops/client/templates/pin.png"> -->
-
-                        <table style="width: 100%;">
-                        <tr><td><p>{{offer.timeago}}</p></td>
-                          <td algin="right"><p>0.3 mile</p></td></tr>
-                        </table>
+                    <div class="item item-text-wrap" style="padding: 0;">
+                        <div class="row">
+                          <div class="col"><p>{{offer.timeago}}</p></div>
+                          <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
+                        </div>
                     </div>
                     <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
