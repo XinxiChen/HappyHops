@@ -67,6 +67,8 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
         Offer.get($stateParams.offerId).success(function(offer) {
             $scope.offer = offer;
+            // $scope.timeago = offer.createdtime - (new Date()).getTime();
+
         });
 
         $scope.shareOnFacebook = function (offer) {
