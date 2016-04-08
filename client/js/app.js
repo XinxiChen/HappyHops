@@ -27,7 +27,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
             }
         });
 
-        $state.go('app.offers');
+        $state.go('app.post');
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
