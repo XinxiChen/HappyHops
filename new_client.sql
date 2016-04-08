@@ -9,5 +9,5 @@ INSERT INTO salesforce.product2 (name, bartender__ids, image__c, location, locat
 INSERT INTO salesforce.bartender (email, password__c, bar_id, nickName, pictureURL__c, description, barName) VALUES
        -- ('js3259@cornell.edu', '$2a$10$ee5.jveXlczkFi3ue4Z9iu/XW8VHvhTBf4U/MudBYUnVrLw2B1e8y', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!', 'Cooper''s Craft & Kitchen'),
        -- ('kb623@cornell.edu', '$2a$10$t7jn.CrZTkG60wSJyd3rjexR6VHQ7jO/nbTkm1TgKMF/DjNOj/LIu', 2, 'Niklas', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender2.jpg', 'Swede who knows his Manhattan(s)', 'Flight 151'),
-       -- ('xc336@cornell.edu', '$2a$10$ee5.jveXlczkFi3ue4Z9iu/XW8VHvhTBf4U/MudBYUnVrLw2B1e8y', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try', 'Wood and Ale''s');
+       -- ('xc336@cornell.edu', '$2a$10$ee5.jveXlczkFi3ue4Z9iu/XW8VHvhTBf4U/MudBYUnVrLw2B1e8y', 3, 'Xinxi', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender3.jpg', 'Try', 'Wood and Ale''s'),
 			 -- ('jz693@cornell.edu','$2a$10$ee5.jveXlczkFi3ue4Z9iu/XW8VHvhTBf4U/MudBYUnVrLw2B1e8y','4','Jingjing','https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender4.jpg','All My Treat!','Society');
