@@ -47,24 +47,32 @@
         </div>
         </div>
 <!--         <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 500px">
- -->            <div ng-repeat="offer in offers" class="list card">
+  -->            <div ng-repeat="offer in offers" class="list card">
                 <a ui-sref="app.offer-detail({offerId: offer.id})">
                     <div class="item item-avatar">
-                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}"> 
+                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
                         <p><b>{{offer.bartendername}}</b></p>
                         <p>{{offer.barname}}</p>
                     </div>
                     <div class="item item-text-wrap">
 
                        <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                        <p>{{offer.timeago}}</p>
+                        <!-- <img align = "right" ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}" > -->
+                        <!-- <img align="right" src="/Users/jingjingzhang/GitHub/HappyHops/client/templates/pin.png"> -->
+
+                        <table style="width: 100%;">
+                        <tr><td><p>{{offer.timeago}}</p></td>
+                          <td class="alignRight"><p>0.3 mile</p></td></tr>
+                        </table>
                     </div>
                     <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
                     </div>
+
                     <div class="item item-body">
-<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
- -->                        <p>{{offer.description}}</p>
+<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
+                       <p>{{offer.description}}</p>
+                       <!-- <p align = "left"> 0.3 mile</p> -->
 <!--                         <p>
                             <a href="#" class="subdued">1 Like</a>
                             <a href="#" class="subdued">5 Comments</a>
@@ -72,10 +80,7 @@
                     </div>
 
                 </a>
-<!--             </div>
- --><!--         </ion-scroll>
- -->
-
+                </div>
     </ion-content>
 
 </ion-view>

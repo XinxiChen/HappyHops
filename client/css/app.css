@@ -543,3 +543,7 @@ a {
     margin-left:-75px;
     width:140px
 }
+
+.alignRight {
+    float: right;
+}

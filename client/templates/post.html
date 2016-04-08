@@ -48,10 +48,13 @@
                     <div class="item item-text-wrap">
 
                        <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                        <p>{{offer.timeago}}  </p>
                         <!-- <img align = "right" ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}" > -->
                         <!-- <img align="right" src="/Users/jingjingzhang/GitHub/HappyHops/client/templates/pin.png"> -->
-                        <p align="right"> 0.3 mile </p>
+
+                        <table style="width: 100%;">
+                        <tr><td><p>{{offer.timeago}}</p></td>
+                          <td class="alignRight"><p>0.3 mile</p></td></tr>
+                        </table>
                     </div>
                     <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
@@ -68,6 +71,7 @@
                     </div>
 
                 </a>
+                </div>
 <!--             </div>
  --><!--         </ion-scroll>
  -->
