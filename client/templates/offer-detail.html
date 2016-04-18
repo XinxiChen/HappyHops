@@ -4,20 +4,19 @@
 
       <div class="list card">
           <div class="item">
-              <h2>{{offer.name}}</h2>
-
+<!--               <h2>{{offer.name}}</h2>
+ -->
               <!-- <p>Posted 50 mins ago</p> -->
 
               <!-- <p id = "demo"> </p> -->
-              <p>{{offer.timeago}}</p>
-          </div>
+<!--               <p>{{offer.timeago}}</p>
+ -->          </div>
           <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
           </div>
           <div class="item item-body">
 
 
-              <p>{{offer.description}}</p>
 
               <!-- <div class="button-bar">
                   <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()">
@@ -43,7 +42,11 @@
               $5.00 WINES
             </a>
             <a class="item item-icon-left" href="#">
+<<<<<<< HEAD
               <i class="ion-ios-wineglass"></i>
+=======
+              <i class="icon ion-coffee"></i>
+>>>>>>> origin/master
               $7.00 WELLS
             </a>
           </div>
@@ -55,9 +58,10 @@
                   <div class="col"><p><b>{{offer.bartendername}}</b></p></div>
                   <div class="col" style="text-align: right;"><p>{{offer.timeago}}</p></div>
                 </div>
-
-                <p>{{offer.barname}}</p>
           </div>
+            <div class="item item-text-wrap">
+             <p style="font-size: large;">{{offer.description}}</p>
+             </div>
 
 
           </div>
