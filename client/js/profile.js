@@ -145,7 +145,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     setTimeout(function () {
                         fileName = new Date().getTime() + ".jpg";
                         S3Uploader.upload(imageURI, fileName).then(function () {
-                            $scope.user.pictureurl = 'https://s3-us-west-1.amazonaws.com/sfdc-demo/' + fileName;
+                            $scope.user.pictureurl = 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/' + fileName;
                         });
                     });
                 },
