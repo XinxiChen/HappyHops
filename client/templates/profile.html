@@ -8,22 +8,24 @@
 		</ion-nav-buttons>
 
 		<ion-content padding="false" scroll="false">
+			<div style="margin-top: 50px;text-align: center;">
 
-			<div ng-if="bartenderuser.id">
-					<div class="header status{{user.status}}-bg">
-							<img class="avatar" ng-src="{{bartenderuser.pictureurl || 'img/avatar.jpg'}}" ng-click="popupDialog()"/>
-<!--                         <h3>Member since {{user.createddate | date:'longDate'}}</h3> -->
-					</div>
-							<h2 style="margin-top: 2px;">{{bartenderuser.nickname}}</h2>
-							<h2 style="margin-top: 2px;">{{bartenderuser.barname}}</h2>
-							<!-- <label class="item item-input">
-									<input type="text" placeholder="Free Text" ng-model="bartenderuser.text">
-							</label>
-							<button class="button button-block button-stable" ng-click="bartenderpost()" ui-sref="app.postcomplete">
-									Submit
-							</button> -->
+				<div ng-if="bartenderuser.id">
+						<div class="header status{{user.status}}-bg">
+								<img class="avatar" ng-src="{{bartenderuser.pictureurl || 'img/avatar.jpg'}}" ng-click="popupDialog()"/>
+	<!--                         <h3>Member since {{user.createddate | date:'longDate'}}</h3> -->
+						</div>
+								<h2 style="margin-top: 2px;">{{bartenderuser.nickname}}</h2>
+								<h2 style="margin-top: 2px;">{{bartenderuser.barname}}</h2>
+								<!-- <label class="item item-input">
+										<input type="text" placeholder="Free Text" ng-model="bartenderuser.text">
+								</label>
+								<button class="button button-block button-stable" ng-click="bartenderpost()" ui-sref="app.postcomplete">
+										Submit
+								</button> -->
 
-			</div>
+				</div>
+		</div>
 
 <!--
 				<div ng-if="user.id">

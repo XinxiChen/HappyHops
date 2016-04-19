@@ -79,7 +79,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
 
-        User.get().success(function(user) {
+        User.get().success(function(bartenderuser) {
             // $rootScope.user = user;
             $scope.bartenderuser = bartenderuser;
 
