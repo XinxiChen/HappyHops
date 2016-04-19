@@ -30,8 +30,12 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     // Services
     .factory('User', function ($http, $rootScope) {
         return {
+            // get: function () {
+            //     return $http.get($rootScope.server.url + '/users/me', null)
+            // },
+
             get: function () {
-                return $http.get($rootScope.server.url + '/users/me', null)
+                return $http.get($rootScope.server.url + '/bartenderusers/bartender', null)
             },
 
             update: function (user) {
@@ -76,7 +80,9 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
 
         User.get().success(function(user) {
-            $rootScope.user = user;
+            // $rootScope.user = user;
+            $scope.bartenderuser = bartenderuser;
+
             $scope.statusLabel = STATUS_LABELS[user.status - 1];
             $scope.statusDescription = STATUS_DESCRIPTIONS[user.status - 1];
         });
