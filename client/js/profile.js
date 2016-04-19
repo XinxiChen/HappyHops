@@ -110,7 +110,8 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {
 
         User.get().success(function(user) {
-            $scope.user = user;
+            // $scope.user = user;
+            $scope.bartenderuser = bartenderuser;
         });
         $scope.preferences = Preference.all();
         $scope.sizes = Size.all();
