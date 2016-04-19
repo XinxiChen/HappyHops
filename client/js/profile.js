@@ -83,8 +83,8 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
             // $rootScope.user = user;
             $scope.bartenderuser = bartenderuser;
 
-            $scope.statusLabel = STATUS_LABELS[user.status - 1];
-            $scope.statusDescription = STATUS_DESCRIPTIONS[user.status - 1];
+            // $scope.statusLabel = STATUS_LABELS[user.status - 1];
+            // $scope.statusDescription = STATUS_DESCRIPTIONS[user.status - 1];
         });
 
         $scope.popupDialog = function() {
