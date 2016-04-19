@@ -1,54 +1,81 @@
+<ion-view title="{{offer.barname}}" class="card-bg">
 
-<ion-view title="Happy Hops" hide-back-button="true" class="card-bg">
+  <ion-content has-header="true" padding="true">
 
-    <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
+      <div class="list card">
+          <div class="item">
+<!--               <h2>{{offer.name}}</h2>
+ -->
+              <!-- <p>Posted 50 mins ago</p> -->
 
-    <ion-content has-header="true" padding="true">
-
-        <ion-refresher
-                pulling-text="Pull to refresh..."
-                on-refresh="doRefresh()">
-        </ion-refresher>
-
-        <!-- Journey Builder survey opt-in button
-        <div class="card" ng-show="showSignup">
-            <div class="item item-text-wrap">
-                Would you like to see premium member offers? Just sign up to get offers in your inbox.
-                <button class="button button-block button-status{{user.status || 1}}" ng-click="signUp()">
-                    Yes, sign up for special offers!
-                </button>
-
-            </div>
-        </div>
-        -->
-             <div ng-repeat="offer in offers" class="list card">
-                <a ui-sref="app.offer-detail({offerId: offer.id})">
-                    <div class="item item-avatar">
-                        <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
-                        <p><b>{{offer.bartendername}}</b></p>
-
-                        <p>{{offer.barname}}</p>
-                    </div>
-                    <div class="item item-text-wrap">
-                       <!-- <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-                       <p>{{offer.timeago}}</p>
-                    </div>
-                    <div class="item item-image">
+              <!-- <p id = "demo"> </p> -->
+<!--               <p>{{offer.timeago}}</p>
+ -->          </div>
+          <div class="item item-image">
                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+          </div>
+          <div class="item item-body">
 
-                    </div>
-                    <div class="item item-body">
-<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
--->                        <p>{{offer.description}}</p><!--
-                            <a href="#" class="subdued">1 Like</a>
-                            <a href="#" class="subdued">5 Comments</a> -->
-                    </div>
-                </a>
 
-            </div>
 
-    </ion-content>
+              <!-- <div class="button-bar">
+                  <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()">
+                      Redeem
+                  </a>
+                  <a class="button button-block button-light"  style="font-size: .9rem;" ng-click="saveToWallet()">
+                      Save to Wallet
+                  </a>
+              </div> -->
+          </div>
+          <div class="item item-text-wrap">
+            <p>{{offer.location}}</p>
+          </div>
+          <div align="center" class="item current_detail">
+            <!-- <img>  -->
 
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-beer"></i>
+              $3.00 DRAFTS
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-wineglass"></i>
+              $5.00 WINES
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-android-bar"></i>
+              $7.00 WELLS
+            </a>
+          </div>
+
+          <div class="item item-avatar">
+                <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
+
+                <div class="row">
+                  <div class="col"><p><b>{{offer.bartendername}}</b></p></div>
+                  <div class="col" style="text-align: right;"><p>{{offer.timeago}}</p></div>
+                </div>
+          </div>
+            <div class="item item-text-wrap">
+             <p style="font-size: large;">{{offer.description}}</p>
+             </div>
+
+
+          </div>
+
+
+
+          <!-- <div class="item tabs tabs-secondary">
+              <a class="tab-item" ng-click="shareOnFacebook()">
+                  <i class="icon icon-facebook"></i>
+              </a>
+              <a class="tab-item" ng-click="shareOnGoogle()">
+                  <i class="icon icon-google"></i>
+              </a>
+              <a class="tab-item" ng-click="shareOnTwitter()">
+                  <i class="icon icon-twitter"></i>
+              </a>
+          </div> -->
+      </div>
+
+  </ion-content>
 </ion-view>
