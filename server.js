@@ -1,5 +1,4 @@
-var multiparty = require('multiparty'),
-    multer = require('multer');
+var multer = require('multer');
 
 var express = require('express'),
     bodyParser     = require('body-parser'),
