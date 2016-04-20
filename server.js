@@ -1,3 +1,6 @@
+var multiparty = require('multiparty'),
+    multer = require('multer');
+
 var express = require('express'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
@@ -22,7 +25,21 @@ var express = require('express'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
+    uploadimg = require('./server/uploads3'),
     app = express();
+
+var storage = multer.diskStorage({
+ destination: function(req, file, cb) {
+   cb(null, './public/uploads/')
+ },
+ filename: function(req, file, cb) {
+   cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+ }
+});
+
+var upload = multer({
+ storage: storage
+});
 
 app.set('port', process.env.PORT || 5000);
 
@@ -82,6 +99,8 @@ app.delete('/activities', auth.validateToken, activities.deleteAll);
 
 //app.post('/cases', auth.validateToken, cases.createCase);
 //app.get('/nfrevoke', cases.revokeToken);
+
+app.post('/upload', upload.single("upload"), uploadimg.upload);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 

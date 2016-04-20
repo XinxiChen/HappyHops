@@ -109,7 +109,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {
 
-        User.get().success(function(user) {
+        User.get().success(function(bartenderuser) {
             // $scope.user = user;
             $scope.bartenderuser = bartenderuser;
         });
@@ -119,12 +119,60 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
         $scope.panel = 1;
 
         $scope.update = function () {
+            console.log('Update function is called');
+            // if the image is not null, upload to server, get updated S3 URL
+
+
+            // Upgrade for bartender profile server side
             User.update($scope.user).success(function() {
                 Status.show('Your profile has been saved.');
             })
         };
 
         $scope.addPicture = function (from) {
+
+            if (!navigator.camera) {
+                $ionicPopup.alert({title: 'Sorry', content: 'This device does not support Camera'});
+                return;
+            }
+
+            var fileName,
+                options = {   quality: 45,
+                    allowEdit: true,
+                    targetWidth: 300,
+                    targetHeight: 300,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    encodingType: Camera.EncodingType.JPEG };
+            if (from === "LIBRARY") {
+                options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+                options.saveToPhotoAlbum = false;
+            } else {
+                options.sourceType = Camera.PictureSourceType.CAMERA;
+                options.saveToPhotoAlbum = true;
+            }
+
+            navigator.camera.getPicture(
+                function (imageURI) {
+                    // without setTimeout(), the code below seems to be executed twice.
+                    setTimeout(function () {
+                        fileName = new Date().getTime() + ".jpg";
+                        S3Uploader.upload(imageURI, fileName).then(function () {
+                            $scope.user.pictureurl = 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/' + fileName;
+                        });
+                    });
+                },
+                function (message) {
+                    // We typically get here because the use canceled the photo operation. Seems better to fail silently.
+                }, options);
+            return false;
+        };
+
+
+
+        $scope.addPicture2 = function () {
+            var file = $scope.myFile;
+            console.log('file is ');
+            console.dir(file);
 
             if (!navigator.camera) {
                 $ionicPopup.alert({title: 'Sorry', content: 'This device does not support Camera'});

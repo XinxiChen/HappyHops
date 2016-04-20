@@ -15,26 +15,33 @@
 
 				<div ng-if="panel===1">
 						<div class="padding">
-								<img class="profile-pic light-border" ng-src="{{user.pictureurl}}" style="float: left;margin-right:8px;margin-bottom:8px;"/>
+								<img class="profile-pic light-border" ng-src="{{bartenderuser.pictureurl}}" style="float: left;margin-right:8px;margin-bottom:8px;"/>
 								<div>
-									<!-- <button class="button icon ion-ios7-camera button-light" ng-click="addPicture()" style="width: 68px;"></button><br/>
+									<button class="button icon ion-ios7-camera button-light" ng-click="addPicture2()" style="width: 68px;"></button><br/>
 										<button class="button icon ion-ios7-photos button-light" ng-click="addPicture('LIBRARY')" style="width: 68px;margin-top: 4px;"></button>
-									-->
-										<input type="file" accept="image/*" ng-model="bartender.img">
+
+										<!-- <input type="file" accept="image/*" ng-model="bartenderuser.img"> -->
+										<!-- <input type = "file" accept="image/*" file-model = "myFile"/> -->
+
+									<form action="upload" enctype="multipart/form-data" method="post">
+										<input type = "file" accept="image/*" name="upload"/>
+										<input type = "submit" value="Upload" />
+									</form>
+										<!-- <input type="file" accept="image/*" ng-model="userimg"> -->
 								</div>
 						</div>
 						<form class="list list-inset" style="clear: both;margin-top: 0">
 								<label class="item item-input">
 										<span class="input-label">Email</span>
-										<input type="text" ng-model="bartender.email" ng-readonly="true"/>
+										<input type="text" ng-model="bartenderuser.email" ng-readonly="true"/>
 								</label>
 								<label class="item item-input">
 										<span class="input-label">First Name</span>
-										<input type="text" ng-model="bartender.firstname" />
+										<input type="text" ng-model="bartenderuser.firstname" />
 								</label>
 								<label class="item item-input">
 										<span class="input-label">Last Name</span>
-										<input type="text" ng-model="bartender.lastname" />
+										<input type="text" ng-model="bartenderuser.lastname" />
 								</label>
 								<label class="item item-input">
 										<span class="input-label">Mobile Phone</span>

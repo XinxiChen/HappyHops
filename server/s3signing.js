@@ -6,6 +6,7 @@ var crypto = require('crypto'),
     awsKey = config.s3.awsKey,
     secret = config.s3.secret;
 
+
 exports.sign = function(req, res, next) {
 
     winston.info('Signing S3 document');
