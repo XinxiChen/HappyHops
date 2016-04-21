@@ -11,6 +11,7 @@ var express = require('express'),
 
     // App modules
     offers = require('./server/offers'),
+    bars = require('./server/bars'),
     products = require('./server/products'),
     users = require('./server/users'),
     bartenderusers = require('./server/bartenderusers'),
@@ -25,7 +26,6 @@ var express = require('express'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
     uploadimg = require('./server/uploads3'),
-    postimg = require('./server/postimg')
     app = express();
 
 var storage = multer.diskStorage({
@@ -76,7 +76,11 @@ app.post('/bartenderusers/post', auth.validateToken, bartenderusers.post);
 app.get('/offers', offers.getAll);
 // app.get('/offers', auth.validateToken, offers.getAll);
 
+
 app.get('/offers/:id', offers.getById);
+//for bars
+app.get('/bars/:id', bars.getById);
+app.get('/bars', bars.getAll);
 app.get('/products', products.getAll);
 app.get('/products/:id', products.getById);
 app.get('/stores', stores.findAll);
@@ -101,8 +105,6 @@ app.delete('/activities', auth.validateToken, activities.deleteAll);
 //app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/upload', upload.single("upload"), uploadimg.upload);
-app.post('/postimg', upload.single("upload"), postimg.upload);
-
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 

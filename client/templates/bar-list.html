@@ -1,27 +1,27 @@
-<ion-view title="{{offer.barname}}" class="card-bg">
+<ion-view title="{{bar.barname}}" class="card-bg">
 
   <ion-content has-header="true" padding="true">
 
-    <div ng-repeat="offer in offers" class="list card">
-                   <a ui-sref="app.offer-detail({offerId: offer.id})">
+    <div ng-repeat="bar in bars" class="list card">
+                   <a ui-sref="app.bar-detail({barId: bar.id})">
                        <div class="item item-avatar">
-                           <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
-                           <p><b>{{offer.bartendername}}</b></p>
-                           <p>{{offer.barname}}</p>
+                           <img ng-if="bar.bartenderpic" ng-src="{{bar.bartenderpic}}">
+                           <p><b>{{bar.bartendername}}</b></p>
+                           <p>{{bar.barname}}</p>
                        </div>
                         <div class="item item-text-wrap" style="padding: 0;">
                            <div class="row">
-                             <div class="col"><p>{{offer.timeago}}</p></div>
+                             <div class="col"><p>{{bar.timeago}}</p></div>
                              <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
                            </div>
                        </div>
                        <div class="item item-image">
-                           <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+                           <img class="full-image" ng-if="bar.image" ng-src="{{bar.image}}">
                        </div>
 
                        <div class="item item-body">
-   <!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
-                          <p style="font-size: large;">{{offer.description}}</p>
+   <!--                         <img class="full-image" ng-if="bar.image" ng-src="{{bar.image}}"> -->
+                          <p style="font-size: large;">{{bar.description}}</p>
                           <!-- <p align = "left"> 0.3 mile</p> -->
    <!--                         <p>
                                <a href="#" class="subdued">1 Like</a>

@@ -87,7 +87,7 @@ function getAll(req, res, next) {
             }
 
             console.log("i:" +i+"," + JSON.stringify(offers));
-
+            console.log(JSON.stringify(offers));
             return res.send(JSON.stringify(offers));
         })
         .catch(next);
