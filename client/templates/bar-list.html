@@ -2,66 +2,35 @@
 
   <ion-content has-header="true" padding="true">
 
-      <div class="list card">
-          <div class="item">
-<!--               <h2>{{offer.name}}</h2>
- -->
-              <!-- <p>Posted 50 mins ago</p> -->
+    <div ng-repeat="offer in offers" class="list card">
+                   <a ui-sref="app.offer-detail({offerId: offer.id})">
+                       <div class="item item-avatar">
+                           <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
+                           <p><b>{{offer.bartendername}}</b></p>
+                           <p>{{offer.barname}}</p>
+                       </div>
+                        <div class="item item-text-wrap" style="padding: 0;">
+                           <div class="row">
+                             <div class="col"><p>{{offer.timeago}}</p></div>
+                             <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
+                           </div>
+                       </div>
+                       <div class="item item-image">
+                           <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
+                       </div>
 
-              <!-- <p id = "demo"> </p> -->
-<!--               <p>{{offer.timeago}}</p>
- -->          </div>
-          <div class="item item-image">
-                        <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
-          </div>
-          <div class="item item-body">
+                       <div class="item item-body">
+   <!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
+                          <p style="font-size: large;">{{offer.description}}</p>
+                          <!-- <p align = "left"> 0.3 mile</p> -->
+   <!--                         <p>
+                               <a href="#" class="subdued">1 Like</a>
+                               <a href="#" class="subdued">5 Comments</a>
+                           </p> -->
+                       </div>
 
-
-
-              <!-- <div class="button-bar">
-                  <a class="button button-block button-light" style="font-size: .9rem;" ng-click="redeem()">
-                      Redeem
-                  </a>
-                  <a class="button button-block button-light"  style="font-size: .9rem;" ng-click="saveToWallet()">
-                      Save to Wallet
-                  </a>
-              </div> -->
-          </div>
-          <div class="item item-text-wrap">
-            <p>{{offer.location}}</p>
-          </div>
-          <div align="center" class="item current_detail">
-            <!-- <img>  -->
-
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-beer"></i>
-              $3.00 DRAFTS
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-wineglass"></i>
-              $5.00 WINES
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-android-bar"></i>
-              $7.00 WELLS
-            </a>
-          </div>
-
-          <div class="item item-avatar">
-                <img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
-
-                <div class="row">
-                  <div class="col"><p><b>{{offer.bartendername}}</b></p></div>
-                  <div class="col" style="text-align: right;"><p>{{offer.timeago}}</p></div>
-                </div>
-          </div>
-            <div class="item item-text-wrap">
-             <p style="font-size: large;">{{offer.description}}</p>
-             </div>
-
-
-          </div>
-
+                   </a>
+                   </div>
 
 
           <!-- <div class="item tabs tabs-secondary">

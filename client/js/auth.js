@@ -166,7 +166,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
                 return $http.post($rootScope.server.url + '/bartendersignup', user);
             }
-            
+
         }
     })
 

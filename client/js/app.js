@@ -1,4 +1,4 @@
-var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.offer', 'nibs.homepage', 'nibs.post', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case'])
+var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.offer','nibs.bar','nibs.homepage', 'nibs.post', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case'])
 
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
 
@@ -20,7 +20,7 @@ var app = angular.module('nibs', ['ionic', 'openfb', 'nibs.config', 'nibs.profil
 
         // Re-route to welcome street if we don't have an authenticated token
         $rootScope.$on('$stateChangeStart', function(event, toState) {
-            if (toState.name !== 'app.offer-detail' && toState.name !== 'app.homepage' && toState.name !== 'app.bartenderlogin'&& toState.name !== 'app.bartendersignup'&& toState.name !== 'app.bartenderlogout'&& toState.name !== 'app.login' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && !$window.localStorage.getItem('token')) {
+            if (toState.name !== 'app.bar-detail' && toState.name !== 'app.offer-detail' && toState.name !== 'app.homepage' && toState.name !== 'app.bartenderlogin'&& toState.name !== 'app.bartendersignup'&& toState.name !== 'app.bartenderlogout'&& toState.name !== 'app.login' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && !$window.localStorage.getItem('token')) {
                 console.log('Aborting state ' + toState.name + ': No token');
                 $location.path('/app/homepage');
                 event.preventDefault();

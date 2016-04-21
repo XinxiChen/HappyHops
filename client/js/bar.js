@@ -1,36 +1,36 @@
-angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
+angular.module('nibs.bar', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wallet'])
 
     // Routes
     .config(function ($stateProvider) {
 
         $stateProvider
 
-            .state('app.offers', {
-                url: "/offers",
+            .state('app.bars', {
+                url: "/bars",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/offer-list.html",
-                        controller: "OfferListCtrl"
+                        templateUrl: "templates/bar-list.html",
+                        controller: "BarListCtrl"
                     }
                 }
             })
 
-            .state('app.offer-detail', {
-                url: "/offers/:offerId",
+            .state('app.bar-detail', {
+                url: "/bars/:barId",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/offer-detail.html",
-                        controller: "OfferDetailCtrl"
+                        templateUrl: "templates/bar-detail.html",
+                        controller: "BarDetailCtrl"
                     }
                 }
             })
 
-            .state('app.offer-redeem', {
-                url: "/offers/:offerId/redeem",
+            .state('app.bar-redeem', {
+                url: "/bars/:barId/redeem",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/redeem.html",
-                        controller: "OfferDetailCtrl"
+                        controller: "BarDetailCtrl"
                     }
                 }
             })
@@ -38,40 +38,40 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
     })
 
     // Services
-    .factory('Offer', function ($http, $rootScope) {
+    .factory('Bar', function ($http, $rootScope) {
         return {
             all: function() {
-                return $http.get($rootScope.server.url + '/offers');
+                return $http.get($rootScope.server.url + '/bars');
             },
-            get: function(offerId) {
-                return $http.get($rootScope.server.url + '/offers/' + offerId);
+            get: function(barId) {
+                return $http.get($rootScope.server.url + '/bars/' + barId);
             }
         };
     })
 
     //Controllers
-    .controller('OfferListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User) {
-        Offer.all().success(function(offers) {
-            $scope.offers = offers;
+    .controller('BarListCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Bar, User) {
+        Bar.all().success(function(bars) {
+            $scope.bars = bars;
         });
 
         $scope.doRefresh = function() {
-            $scope.offers = Offer.all().success(function(offers) {
-                $scope.offers = offers;
+            $scope.bars = Bar.all().success(function(bars) {
+                $scope.bars = bars;
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
     })
 
-    .controller('OfferDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Offer, OpenFB, WalletItem, Activity, Status) {
+    .controller('BarDetailCtrl', function ($rootScope, $scope, $state, $ionicPopup, $stateParams, Bar, OpenFB, WalletItem, Activity, Status) {
 
-        Offer.get($stateParams.offerId).success(function(offer) {
-            $scope.offer = offer;
+        Bar.get($stateParams.barId).success(function(bar) {
+            $scope.bar = bar;
             // $scope.timeago = offer.createdtime - (new Date()).getTime();
 
         });
 
-        $scope.shareOnFacebook = function (offer) {
+        $scope.shareOnFacebook = function (bar) {
 //      Uncomment to enable actual "Share on Facebook" feature
 //            OpenFB.post('/me/feed', {name: offer.name, link: offer.campaignPage, picture: offer.image, caption: 'Offer ends soon!', description: offer.description})
 //                .success(function() {
@@ -83,7 +83,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 //                    $ionicPopup.alert({title: 'Facebook', content: 'Something went wrong while sharing this offer.'});
 //                });
             Status.show('Shared on Facebook!');
-            Activity.create({type: "Shared on Facebook", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+            Activity.create({type: "Shared on Facebook", points: 1000, barId: $scope.bar.sfid, name: $scope.bar.name, image: $scope.bar.image})
                 .success(function(status) {
                     Status.checkStatus(status);
                 });
@@ -92,7 +92,7 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
         $scope.shareOnTwitter = function () {
             Status.show('Shared on Twitter!');
-            Activity.create({type: "Shared on Twitter", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+            Activity.create({type: "Shared on Twitter", points: 1000, barId: $scope.bar.sfid, name: $scope.bar.name, image: $scope.bar.image})
                 .success(function(status) {
                     Status.checkStatus(status);
                 });
@@ -100,16 +100,16 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
 
         $scope.shareOnGoogle = function () {
             Status.show('Shared on Google+!');
-            Activity.create({type: "Shared on Google+", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+            Activity.create({type: "Shared on Google+", points: 1000, barId: $scope.bar.sfid, name: $scope.bar.name, image: $scope.bar.image})
                 .success(function(status) {
                     Status.checkStatus(status);
                 });
         };
 
         $scope.saveToWallet = function () {
-            WalletItem.create({offerId: $scope.offer.id}).success(function(status) {
+            WalletItem.create({barId: $scope.bar.id}).success(function(status) {
                 Status.show('Saved to your wallet!');
-                Activity.create({type: "Saved to Wallet", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+                Activity.create({type: "Saved to Wallet", points: 1000, barId: $scope.bar.sfid, name: $scope.bar.name, image: $scope.bar.image})
                     .success(function(status) {
                         Status.checkStatus(status);
                     });
@@ -117,11 +117,11 @@ angular.module('nibs.offer', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wa
         };
 
         $scope.redeem = function () {
-            Activity.create({type: "Redeemed Offer", points: 1000, offerId: $scope.offer.sfid, name: $scope.offer.name, image: $scope.offer.image})
+            Activity.create({type: "Redeemed Bar", points: 1000, barId: $scope.bar.sfid, name: $scope.bar.name, image: $scope.bar.image})
                 .success(function(status) {
                     Status.checkStatus(status);
                 });
-            $state.go('app.offer-redeem', {offerId: $scope.offer.id});
+            $state.go('app.bar-redeem', {barId: $scope.bar.id});
         };
 
     });
