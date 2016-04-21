@@ -35,7 +35,7 @@ angular.module('nibs.post', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wal
                 return $http.get($rootScope.server.url + '/bartenderusers/bartender', null)
             },
 
-            update: function (user) {
+            update: function (bartenderuser) {
                 return $http.put($rootScope.server.url + '/bartenderusers/bartender', bartenderuser)
             },
             bartenderpost: function (bartenderuser) {

@@ -25,9 +25,17 @@
 
 									<form action="upload" enctype="multipart/form-data" method="post">
 										<input type = "file" accept="image/*" name="upload"/>
+										<input type = "text" name="{{bartenderuser.id}}" >
 										<input type = "submit" value="Upload" />
 									</form>
 										<!-- <input type="file" accept="image/*" ng-model="userimg"> -->
+									<!-- <form enctype="multipart/form-data">
+											<input type = "file" accept="image/*" ng-model="imgform.upload" name="upload"/> -->
+											<!-- <input type = "submit" value="Upload" /> -->
+											<!-- <button ng-click="upload()">Upload</button>
+										</form> -->
+
+										<!-- <input accept="image/*" name="file" ng-value="fileToUpload" value="{{fileToUpload}}" file-model="fileToUpload" set-file-data="fileToUpload = value;" type="file" id="my_file" /> -->
 								</div>
 						</div>
 						<form class="list list-inset" style="clear: both;margin-top: 0">

@@ -13,7 +13,7 @@ function getBartenderProfile(req, res, next) {
         externalUserId = req.externalUserId;
 
     db.query(
-        'SELECT id, nickname, bar_id, barname, firstName, lastName, email, mobilePhone, pictureURL__c as pictureURL, createddate, preference__c AS preference, size__c AS size FROM salesforce.bartender WHERE id=$1',
+        'SELECT id, nickname, bar_id, barname, firstName, lastName, email, mobilePhone, pictureURL__c as pictureURL, createddate, preference__c AS preference, size__c AS size, description FROM salesforce.bartender WHERE id=$1',
         [userId], true)
     .then(function (user) {
         // user.points = activity.points;
@@ -81,4 +81,3 @@ function post(req, res, next) {
 exports.getBartenderProfile = getBartenderProfile;
 exports.updateBartenderProfile = updateBartenderProfile;
 exports.post = post;
-

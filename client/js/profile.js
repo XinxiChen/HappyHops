@@ -28,7 +28,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     })
 
     // Services
-    .factory('User', function ($http, $rootScope) {
+    .factory('Bartender', function ($http, $rootScope) {
         return {
             // get: function () {
             //     return $http.get($rootScope.server.url + '/users/me', null)
@@ -39,7 +39,11 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
             },
 
             update: function (user) {
-                return $http.put($rootScope.server.url + '/users/me', user)
+                return $http.put($rootScope.server.url + '/bartenderusers/bartender', user)
+            },
+
+            uploadimg: function (data) {
+                return $http.post($rootScope.server.url + '/upload', data)
             }
         };
 
@@ -77,9 +81,9 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     })
 
     //Controllers
-    .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
+    .controller('ProfileCtrl', function ($rootScope, $scope, $state, Bartender, STATUS_LABELS, STATUS_DESCRIPTIONS) {
 
-        User.get().success(function(bartenderuser) {
+        Bartender.get().success(function(bartenderuser) {
             // $rootScope.user = user;
             $scope.bartenderuser = bartenderuser;
 
@@ -107,9 +111,9 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     })
 
-    .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {
+    .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, Bartender, Preference, Size, Status) {
 
-        User.get().success(function(bartenderuser) {
+        Bartender.get().success(function(bartenderuser) {
             // $scope.user = user;
             $scope.bartenderuser = bartenderuser;
         });
@@ -118,13 +122,21 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
         $scope.panel = 1;
 
+        $scope.upload = function(){
+          console.log($scope.imgform);
+          Bartender.uploadimg($scope.imgform).success(function() {
+            console.log('Successfully uploaded.');
+          })
+        };
+
         $scope.update = function () {
             console.log('Update function is called');
             // if the image is not null, upload to server, get updated S3 URL
 
 
             // Upgrade for bartender profile server side
-            User.update($scope.user).success(function() {
+            console.log($scope.bartenderuser);
+            Bartender.update($scope.bartenderuser).success(function() {
                 Status.show('Your profile has been saved.');
             })
         };

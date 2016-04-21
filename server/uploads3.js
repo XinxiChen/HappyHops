@@ -1,4 +1,5 @@
 // Load the AWS SDK for Node.js
+var db = require('./pghelper');
 var AWS = require('aws-sdk');
 var fs = require('fs');
 
@@ -10,10 +11,29 @@ AWS.config.update({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
+
+/**
+ * Update user profile
+ * @param req
+ * @param res
+ * @param next
+ */
+function updateimg(id, url) {
+    console.log('updating: bartender' + id + ', img ' + url);
+
+    db.query('update salesforce.bartender SET pictureURL__c=$1 WHERE id=$2',
+            [url, parseInt(id)]);
+}
+
+
 function upload(req, res, next) {
-  console.log(req);
-  console.log(req.file);
-  console.log(req.body);
+  // console.log(req);
+  // console.log(req.file);
+  console.log("Req.body:");
+
+  // The following is the bartender id
+  console.log(Object.keys(req.body)[0]);
+  var bartenderid = Object.keys(req.body)[0];
   // console.log(req.file.path);
   // Create a bucket using bound parameters and put something in it.
   // Make sure to change the bucket name from "myBucket" to something unique.
@@ -34,6 +54,11 @@ function upload(req, res, next) {
           signed_request: data,
           url: 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/' + req.file.filename
         };
+
+        //update the url in database
+        var imgurl = 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/' + req.file.filename;
+        updateimg(bartenderid, imgurl);
+
         console.log("Successfully uploaded data to happyhops/bartenders");
         console.log("Going to delete an existing file");
         fs.unlink(req.file.path, function(err) {
@@ -53,37 +78,5 @@ function upload(req, res, next) {
 
 
 
-function get_signed_request(file){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/sign_s3?file_name="+file.name+"&file_type="+file.type);
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === 4){
-            if(xhr.status === 200){
-                var response = JSON.parse(xhr.responseText);
-                upload_file(file, response.signed_request, response.url);
-            }
-            else{
-                alert("Could not get signed URL.");
-            }
-        }
-    };
-    xhr.send();
-}
-
-function upload_file(file, signed_request, url){
-    var xhr = new XMLHttpRequest();
-    xhr.open("PUT", signed_request);
-    xhr.setRequestHeader('x-amz-acl', 'public-read');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            document.getElementById("preview").src = url;
-            document.getElementById("avatar_url").value = url;
-        }
-    };
-    xhr.onerror = function() {
-        alert("Could not upload file.");
-    };
-    xhr.send(file);
-}
-
 exports.upload = upload;
+exports.updateImg = updateimg;
