@@ -26,6 +26,7 @@ var express = require('express'),
     s3signing = require('./server/s3signing'),
     activities = require('./server/activities'),
     uploadimg = require('./server/uploads3'),
+    postimg = require('./server/postimg'),
     app = express();
 
 var storage = multer.diskStorage({
@@ -105,7 +106,7 @@ app.delete('/activities', auth.validateToken, activities.deleteAll);
 //app.get('/nfrevoke', cases.revokeToken);
 
 app.post('/upload', upload.single("upload"), uploadimg.upload);
-
+app.post('/postimg', upload.single("upload"), postimg.upload);
 app.post('/s3signing', auth.validateToken, s3signing.sign);
 
 app.listen(app.get('port'), function () {
