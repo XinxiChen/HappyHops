@@ -34,7 +34,15 @@
 												</button> -->
 
 												<form action="postimg" target="hiddenFrame" enctype="multipart/form-data"  method="post">
-													<input type = "file" accept="image/*" name="upload"/>
+
+
+													<input type = "file" accept="image/*" name="upload" id="upload" class="inputfile"/>
+													<label for="upload">
+														<button class="button icon ion-ios7-camera button-light"></button>
+														<!-- <strong>Choose a file</strong> -->
+													</label>
+													<br>
+													<br>
 													<input type = "hidden" name="{{bartenderuser.id}}" >
 													<!-- <input type = "hidden" name="{{bartenderuser.barid}}"> -->
 													<label class="item item-input">
