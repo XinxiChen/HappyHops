@@ -60,7 +60,7 @@ angular.module('nibs.post', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wal
     })
 
     //Controllers
-    .controller('PostCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User) {
+    .controller('PostCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal, Offer, User, $window, $state) {
         Offer.all().success(function(offers) {
             $scope.offers = offers;
         });
@@ -96,29 +96,32 @@ angular.module('nibs.post', ['openfb', 'nibs.status', 'nibs.activity', 'nibs.wal
 
           // Custom popup
           var myPopup = $ionicPopup.show({
-             template: '<input type = "text" ng-model = "data.model">',
-             title: 'Title',
-             subTitle: 'Subtitle',
+            //  template: '<input type = "text" ng-model = "data.model">',
+             title: 'Success',
              scope: $scope,
 
              buttons: [
-                { text: 'Cancel' }, {
-                   text: '<b>Save</b>',
+                {
+                   text: '<b>Refresh</b>',
                    type: 'button-positive',
                       onTap: function(e) {
 
-                         if (!$scope.data.model) {
-                            //don't allow the user to close unless he enters model...
-                               e.preventDefault();
-                         } else {
-                            return $scope.data.model;
-                         }
+                        //  if (!$scope.data.model) {
+                        //     //don't allow the user to close unless he enters model...
+                        //        e.preventDefault();
+                        //  } else {
+                        //     return $scope.data.model;
+                        //  }
+                        $window.location = '/';
+                        // $state.reload('app.post');
+                        // $state.reload();
                       }
                 }
              ]
           });
 
           myPopup.then(function(res) {
+              // $state.reload();
              console.log('Tapped!', res);
           });
        };
