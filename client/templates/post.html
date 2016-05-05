@@ -80,9 +80,11 @@
 													<div class="col" style="text-align: right;"><p>0.3 mile</p></div>
 												</div>
 										</div>
-										<div class="item item-image">
+										<!-- <div class="item item-image">
 												<img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
-										</div>
+										</div> -->
+										<img class="full-image" ng-if="offer.campaignpage" ng-src="{{offer.campaignpage}}">
+										<img class="full-image" ng-if="!offer.campaignpage" ng-src="{{offer.image}}">
 
 										<div class="item item-body">
 <!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
