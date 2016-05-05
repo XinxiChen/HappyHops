@@ -51,7 +51,7 @@ function timeSince(date) {
 
 function getTime() {
       var d = new Date();
-      // var x = offer-detail.getElementById("demo");
+      // var x = bar-detail.getElementById("demo");
       // var m = d.getMinutes();
       // x.innerHTML =  ":123123123" + m + ":" ;
       return d;
@@ -59,13 +59,14 @@ function getTime() {
 
 function findAll(limit) {
     //return db.query("SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign WHERE type='Offer' AND status='In Progress' ORDER BY publishDate DESC LIMIT $1", [limit]);
-    return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign ORDER BY id DESC LIMIT $1', [limit]);
+    return db.query('SELECT id, name, description, image__c, productpage__c, publishDate__c, family, bar__id, location, location__latitude__s, location__longitude__s, open__hours, amentities, bartender__ids, flag FROM salesforce.product2 ORDER BY id DESC LIMIT $1', [limit]);
 
 };
 
 function findById(id) {
     // Retrieve offer either by Salesforce id or Postgress id
-    return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    // return db.query('SELECT id, sfId, name, startDate, endDate, description, image__c AS image, campaignPage__c AS campaignPage, publishDate__c AS publishDate, deal__valid__duration, createdTime, bartender__id, barName, bartenderName, location, location__latitude__s, location__longitude__s, bartenderPic FROM salesforce.campaign WHERE ' + (isNaN(id) ? 'sfId' : 'id') + '=$1', [id], true);
+    return db.query('SELECT id, name, description, image__c, productpage__c, publishDate__c, family, bar__id, location, location__latitude__s, location__longitude__s, open__hours, amentities, bartender__ids, flag FROM salesforce.product2 WHERE id=$1', [id], true);
 };
 
 // function findById(id) {
@@ -76,19 +77,19 @@ function findById(id) {
 
 function getAll(req, res, next) {
     findAll(20)
-        .then(function (offers) {
-            console.log(JSON.stringify(offers));
+        .then(function (bars) {
+            console.log(JSON.stringify(bars));
             // update timeago
-            console.log("length:" + offers.length);
-            for(i = 0; i < offers.length; ++i)  {
-                console.log("i:" +i+"," + JSON.stringify(offers[i].createdtime));
-
-                offers[i].timeago = timeSince(offers[i].createdtime);
+            console.log("length:" + bars.length);
+            for(i = 0; i < bars.length; ++i)  {
+                console.log("i:" +i+"," + JSON.stringify(bars[i].createdtime));
+                // gonna be deleted
+                // bars[i].timeago = timeSince(bars[i].createdtime);
             }
 
-            console.log("i:" +i+"," + JSON.stringify(offers));
-            console.log(JSON.stringify(offers));
-            return res.send(JSON.stringify(offers));
+            console.log("i:" +i+"," + JSON.stringify(bars));
+            console.log(JSON.stringify(bars));
+            return res.send(JSON.stringify(bars));
         })
         .catch(next);
 };
@@ -96,10 +97,10 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     var id = req.params.id;
     findById(id)
-        .then(function (offer) {
-            offer.timeago = timeSince(offer.createdtime);
-            console.log(JSON.stringify(offer));
-            return res.send(JSON.stringify(offer));
+        .then(function (bar) {
+            // offer.timeago = timeSince(offer.createdtime);
+            console.log(JSON.stringify(bar));
+            return res.send(JSON.stringify(bar));
         })
         .catch(next);
 };

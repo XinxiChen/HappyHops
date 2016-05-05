@@ -164,6 +164,8 @@ INSERT INTO salesforce.product2 (name, bartender__ids, image__c, location, locat
 --     (3, 'Wood and Ale''s', '{3}', 'https://s3-us-west-2.amazonaws.com/happyhops/bars/bar3.jpg', '234 W 14th St, New York, NY 10011', '40.7391167', '-74.0037621', '11AM-4AM', 'Low-key site for pints & pitchers with burgers, wings & nachos amid dark digs with sports on TVs.');
 
 
+
+
 /* Insert data for bartenders.*/
 INSERT INTO salesforce.bartender (email, password__c, bar_id, nickName, pictureURL__c, description, barName) VALUES
        ('js3259@cornell.edu', '$2a$10$ee5.jveXlczkFi3ue4Z9iu/XW8VHvhTBf4U/MudBYUnVrLw2B1e8y', 1, 'Emil', 'https://s3-us-west-2.amazonaws.com/happyhops/bartenders/bartender1.jpg', 'Swede enlightening NYC with my killer Martini!', 'Cooper''s Craft & Kitchen'),
