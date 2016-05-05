@@ -4,17 +4,17 @@
 
     <div ng-repeat="bar in bars" class="list card">
                    <a ui-sref="app.bar-detail({barId: bar.id})">
-                       <div class="item">
-                           <img class="full-image" ng-if="bar.image__c" ng-src="{{bar.image__c}}">
+                       <div class="item item-avatar">
+                           <img ng-if="bar.bartenderpic" ng-src="{{bar.bartenderpic}}">
                            <p><b>{{bar.name}}</b></p>
-                           <!-- <p>{{bar.name}}</p> -->
+                           <p>{{bar.name}}</p>
                        </div>
-                        <!-- <div class="item item-text-wrap" style="padding: 0;">
+                        <div class="item item-text-wrap" style="padding: 0;">
                            <div class="row">
                              <div class="col"><p>{{bar.timeago}}</p></div>
                              <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
                            </div>
-                       </div> -->
+                       </div>
                        <div class="item item-image">
                            <img class="full-image" ng-if="bar.image" ng-src="{{bar.image}}">
                        </div>
