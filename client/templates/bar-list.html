@@ -2,12 +2,12 @@
 
   <ion-nav-buttons side="left">
      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+     <h1 class="title">EXPLORE</h1>
   </ion-nav-buttons>
 
   <ion-content has-header="true" padding="true">
 
     <div ng-repeat="bar in bars" class="list card">
-                   <p><b>{{bar.name}}</b></p>
                    <a ui-sref="app.bar-detail({barId: bar.id})">
 
                        <div class="item">
@@ -16,19 +16,20 @@
                            <!-- <p>{{bar.name}}</p> -->
                        </div>
 
-                        <div class="item item-text-wrap" style="padding: 0;">
+                       <!-- <div class="item" style="padding: 0;">
                            <div class="row">
-                             <!-- <div class="col"><p>{{bar.timeago}}</p></div>
-                             <div class="col" style="text-align: right;"><p>0.3 mile</p></div> -->
+                             <div class="col"><p>{{bar.timeago}}</p></div>
+                             <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
                            </div>
-                       </div>
+                       </div> -->
                        <div class="item item-image">
+                           <p><b>{{bar.name}}</b></p>
                            <img class="full-image" ng-if="bar.image__c" ng-src="{{bar.image__c}}">
                        </div>
 
                        <div class="item item-body">
    <!--                         <img class="full-image" ng-if="bar.image" ng-src="{{bar.image}}"> -->
-                          <p style="font-size: large;">{{bar.description}}</p>
+                          <p>{{bar.description}}</p>
                           <!-- <p align = "left"> 0.3 mile</p> -->
    <!--                         <p>
                                <a href="#" class="subdued">1 Like</a>
