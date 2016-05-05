@@ -58,8 +58,8 @@ function post(bartenderid, url, text) {
              //      Date.now = function() { return new Date().getTime(); }
              //  }
 
-              db.query('INSERT INTO salesforce.campaign (description, bartenderName, barName, bartenderPic, bartender__id, image__c, location, location__latitude__s, location__longitude__s, createdTime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-                      [text, user.nickname, user.barname, user.pictureurl, user.id, url, bartext.location, bartext.location__latitude__s, bartext.location__longitude__s, new Date()], true);
+              db.query('INSERT INTO salesforce.campaign (description, bartenderName, barName, bartenderPic, bartender__id, campaignpage__c, image__c, location, location__latitude__s, location__longitude__s, createdTime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+                      [text, user.nickname, user.barname, user.pictureurl, user.id, url, bartext.image__c, bartext.location, bartext.location__latitude__s, bartext.location__longitude__s, new Date()], true);
       })
       .catch();
     })
