@@ -1,14 +1,21 @@
 <ion-view title="{{bar.barname}}" class="card-bg">
 
+  <ion-nav-buttons side="left">
+     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
   <ion-content has-header="true" padding="true">
 
     <div ng-repeat="bar in bars" class="list card">
+                   <p><b>{{bar.name}}</b></p>
                    <a ui-sref="app.bar-detail({barId: bar.id})">
-                       <div class="item item-avatar">
-                           <img ng-if="bar.bartenderpic" ng-src="{{bar.bartenderpic}}">
-                           <p><b>{{bar.name}}</b></p>
-                           <p>{{bar.name}}</p>
+
+                       <div class="item">
+                           <img ng-if="bar.image_c" ng-src="{{bar.image_c}}">
+
+                           <!-- <p>{{bar.name}}</p> -->
                        </div>
+
                         <div class="item item-text-wrap" style="padding: 0;">
                            <div class="row">
                              <!-- <div class="col"><p>{{bar.timeago}}</p></div>
