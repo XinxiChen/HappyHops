@@ -37,11 +37,15 @@ User Scenario:
 
 System Architecture
 -------------------
-<img src="doc/tech/Database.png" width="400"/>
+<img src="doc/tech/System_Architecture.png" width="400"/>
 
 Database Design
 -------------------
 <img src="doc/tech/Database.png" width="400"/>
+
+How does the Post Feature Works?
+-------------------
+<img src="doc/tech/Post_Image.png" width="400"/>
 
 
 How To Use The Demo
