@@ -13,7 +13,7 @@ Demo Link: [happyhops.herokuapp.com](happyhops.herokuapp.com)
 
 User Scenario: 
 
-Suppose a bartender, standing in front of the bar table, you are worrying about tonight's income and this month's rent. "Why there are so less customers?! It is Friday night!" You are shouting in your heart but it does no effects. Here Happyhops comes. Happyhops will help you promote your bar deals and bar environment in a sec!
+A bartender, standing in front of the bar table, he is worrying about tonight's income and this month's rent. "Why there are so less customers?! It is Friday night!" You are shouting in your heart but it does no effects. Here Happyhops comes. Happyhops will help you promote your bar deals and bar environment in a sec!
 
 Suppose you are wondering around, you want to find a place to hangout with your frineds. Google map ? No, Yelp? No, Happyhops ? Yes ! Happyhops gives you the most accurate information of bars and help you find the most recent bar deals and most suitable bar environment for you. 
 
@@ -53,11 +53,12 @@ How To Use The Demo
 -------------------
 1. Go to Our homepage (http://happyhops.herokuapp.com/#/app/homepage)
 2. Sign up as a bartender if first tiem come to our app
-3. Login as an bartender 
-	<img src="doc/screenshots/Login.png" width="400"/>
+3. Login as an bartender  
+	
+ <img src="doc/screenshots/Login.png" width="200"/>
 	
 4. Send you first post and wait for your customer!
-	<img src="doc/screenshots/post_success.png" width="400"/>	
+	<img src="doc/screenshots/post_success.png" width="200"/>	
 Deploy to Heroku
 ----------------
 1. The app is already deployed to [happyhops.herokuapp.com](happyhops.herokuapp.com)
