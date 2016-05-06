@@ -62,36 +62,27 @@
 				</div>
 <!--         <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 500px">
  -->            <div ng-repeat="offer in offers" class="list card">
-								<a ui-sref="app.offer-detail({offerId: offer.id})">
+									<a ui-sref="app.offer-detail({offerId: offer.id})">
 										<div class="item item-avatar">
 												<img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
 												<p><b>{{offer.bartendername}}</b></p>
 												<p>{{offer.barname}}</p>
 										</div>
 										<div class="item item-text-wrap" style="padding: 0;">
-
-											 <!--  <p>Posted on {{offer.createdtime | date:'EEEE, MMMM d y'}}</p> -->
-												<!-- <img align = "right" ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}" > -->
-												<!-- <img align="right" src="/Users/jingjingzhang/GitHub/HappyHops/client/templates/pin.png"> -->
-
 												<div class="row">
 													<div class="col"><p>{{offer.timeago}}</p></div>
 													<div class="col" style="text-align: right;"><p>0.3 mile</p></div>
 												</div>
 										</div>
-										<!-- <div class="item item-image">
-												<img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
-										</div> -->
 										<img class="full-image" ng-if="offer.campaignpage" ng-src="{{offer.campaignpage}}">
 										<img class="full-image" ng-if="!offer.campaignpage" ng-src="{{offer.image}}">
 
 										<div class="item item-body">
-<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
 											 <p style="font-size: large;">{{offer.description}}</p>
 
 										</div>
 
-								</a>
+									</a>
 								</div>
 			<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 
