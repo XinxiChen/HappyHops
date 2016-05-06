@@ -4,8 +4,6 @@
 
 		<ion-content>
 				<div style="margin-top: 50px;text-align: center;">
-
-
 						<img src="css/img/HappyHops2.png" style="width:50%; margin:0 auto;display: block;"/>
 
 						<br>
@@ -16,25 +14,13 @@
 
 								<a class="button button－stable" ui-sref="app.bartenderlogin">
 										 Bartender?&nbsp;
-										 <!-- <i class="icon-arrow-right"></i> -->
 								</a>
 								<br>
 								<br>
 								<br>
-<!-- &nbsp; -->
-
-								<!-- <a class="button button-stable" ui-sref="app.signup" style="max-width:84%;color:#73404C;padding-left:28px;padding-right:28px;">
-										Sign Up to happy some hops
-								</a>
-								<a class="button button-block button-clear" ui-sref="app.login">
-										Already a Hopper?&nbsp;&nbsp;Log In&nbsp;<i class="icon-arrow-right"></i>
-								</a> -->
-
 						</div>
 				</div>
-
-<!--         <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 500px">
- -->            <div ng-repeat="offer in offers" class="list card">
+          		<div ng-repeat="offer in offers" class="list card">
 								<a ui-sref="app.offer-detail({offerId: offer.id})">
 										<div class="item item-avatar">
 												<img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
@@ -47,23 +33,12 @@
 													<div class="col" style="text-align: right;"><p>0.3 mile</p></div>
 												</div>
 										</div>
-										<!-- <div class="item item-image">
-												<img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}">
-										</div> -->
-
 										<img class="full-image" ng-if="offer.campaignpage" ng-src="{{offer.campaignpage}}">
 										<img class="full-image" ng-if="!offer.campaignpage" ng-src="{{offer.image}}">
 
 										<div class="item item-body">
-<!--                         <img class="full-image" ng-if="offer.image" ng-src="{{offer.image}}"> -->
 											 <p style="font-size: large;">{{offer.description}}</p>
-											 <!-- <p align = "left"> 0.3 mile</p> -->
-<!--                         <p>
-														<a href="#" class="subdued">1 Like</a>
-														<a href="#" class="subdued">5 Comments</a>
-												</p> -->
 										</div>
-
 								</a>
 								</div>
 
