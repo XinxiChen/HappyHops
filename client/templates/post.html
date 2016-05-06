@@ -52,7 +52,7 @@
 													<button class="button button-block button-stable" ng-click = "showPopup()">
 														Post
 													</button>
-													<!-- <input type = "submit" value="Post" /> -->
+													
 													<br>
 												</form>
 
@@ -60,8 +60,7 @@
 
 				</div>
 				</div>
-<!--         <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 500px">
- -->            <div ng-repeat="offer in offers" class="list card">
+            	<div ng-repeat="offer in offers" class="list card">
 									<a ui-sref="app.offer-detail({offerId: offer.id})">
 										<div class="item item-avatar">
 												<img ng-if="offer.bartenderpic" ng-src="{{offer.bartenderpic}}">
