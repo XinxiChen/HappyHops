@@ -20,22 +20,11 @@
 									<button class="button icon ion-ios7-camera button-light" ng-click="addPicture2()" style="width: 68px;"></button><br/>
 										<button class="button icon ion-ios7-photos button-light" ng-click="addPicture('LIBRARY')" style="width: 68px;margin-top: 4px;"></button>
 
-										<!-- <input type="file" accept="image/*" ng-model="bartenderuser.img"> -->
-										<!-- <input type = "file" accept="image/*" file-model = "myFile"/> -->
-
 									<form action="upload" target="hiddenFrame" enctype="multipart/form-data"  method="post">
 										<input type = "file" accept="image/*" name="upload"/>
 										<input type = "hidden" name="{{bartenderuser.id}}" >
 										<input type = "submit" value="Upload" />
 									</form>
-										<!-- <input type="file" accept="image/*" ng-model="userimg"> -->
-									<!-- <form enctype="multipart/form-data">
-											<input type = "file" accept="image/*" ng-model="imgform.upload" name="upload"/> -->
-											<!-- <input type = "submit" value="Upload" /> -->
-											<!-- <button ng-click="upload()">Upload</button>
-										</form> -->
-
-										<!-- <input accept="image/*" name="file" ng-value="fileToUpload" value="{{fileToUpload}}" file-model="fileToUpload" set-file-data="fileToUpload = value;" type="file" id="my_file" /> -->
 								</div>
 						</div>
 						<form class="list list-inset" style="clear: both;margin-top: 0">
@@ -89,7 +78,6 @@
 				</div>
 
 				<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-				<!-- <iframe name="hiddenFrame" width="100" height="10" border="0"></iframe> -->
 		</ion-content>
 
 </ion-view>
