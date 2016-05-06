@@ -14,19 +14,6 @@
 
     <div ng-repeat="bar in bars" class="list card">
                    <a ui-sref="app.bar-detail({barId: bar.id})">
-
-                       <!-- <div class="item">
-                           <img ng-if="bar.image_c" ng-src="{{bar.image_c}}"> -->
-
-                           <!-- <p>{{bar.name}}</p>
-                       </div> -->
-
-                       <!-- <div class="item" style="padding: 0;">
-                           <div class="row">
-                             <div class="col"><p>{{bar.timeago}}</p></div>
-                             <div class="col" style="text-align: right;"><p>0.3 mile</p></div>
-                           </div>
-                       </div> -->
                        <div class="item item-image">
                            <p style="font-size:large;" ><b>{{bar.name}}</b></p>
                            <img class="full-image" ng-if="bar.image__c" ng-src="{{bar.image__c}}">
