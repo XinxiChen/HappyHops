@@ -1,20 +1,25 @@
-<ion-view title="{{bar.barname}}" class="card-bg">
+<ion-view title="{{bar.barname}}" class="welcome">
 
   <ion-nav-buttons side="left">
      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
      <h1 class="title">EXPLORE</h1>
   </ion-nav-buttons>
 
+
   <ion-content has-header="true" padding="true">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Explore Bars">
+    </label>
 
     <div ng-repeat="bar in bars" class="list card">
                    <a ui-sref="app.bar-detail({barId: bar.id})">
 
-                       <div class="item">
-                           <img ng-if="bar.image_c" ng-src="{{bar.image_c}}">
+                       <!-- <div class="item">
+                           <img ng-if="bar.image_c" ng-src="{{bar.image_c}}"> -->
 
-                           <!-- <p>{{bar.name}}</p> -->
-                       </div>
+                           <!-- <p>{{bar.name}}</p>
+                       </div> -->
 
                        <!-- <div class="item" style="padding: 0;">
                            <div class="row">
@@ -23,7 +28,7 @@
                            </div>
                        </div> -->
                        <div class="item item-image">
-                           <p><b>{{bar.name}}</b></p>
+                           <p style="font-size:large;" ><b>{{bar.name}}</b></p>
                            <img class="full-image" ng-if="bar.image__c" ng-src="{{bar.image__c}}">
                        </div>
 
