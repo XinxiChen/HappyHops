@@ -17,24 +17,24 @@ A bartender, standing in front of the bar table, he is worrying about tonight's 
 
 Suppose you are wondering around, you want to find a place to hangout with your frineds. Google map ? No, Yelp? No, Happyhops ? Yes ! Happyhops gives you the most accurate information of bars and help you find the most recent bar deals and most suitable bar environment for you. 
 
-###Homepage
+### Homepage
 <img src="doc/screenshots/Homepage.PNG" width="200"/>
 
-###Feeds
+### Feeds
 <img src="doc/screenshots/Feed.PNG" width="200"/>
 
-###Bartender Post
+### Bartender Post
 <img src="doc/screenshots/Post.PNG" width="200"/>
 
-###Post Details
+### Post Details
 <img src="doc/screenshots/Post_detail1.PNG" width="200"/>
 <img src="doc/screenshots/Post_detail2.PNG" width="200"/>
 
-###Bar Catalog
+### Bar Catalog
 <img src="doc/screenshots/Bars.PNG" width="200"/>
 <img src="doc/screenshots/Bar_detail.PNG" width="200"/>
 
-###Menu
+### Menu
 <img src="doc/screenshots/Menu.PNG" width="200"/>
 
 System Architecture
